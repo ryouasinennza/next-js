@@ -7,9 +7,7 @@ type Argument = {
   initialCount: UseCounterState
 }
 
-type UseCounter = ({
-  initialCount,
-}: Argument) => Omit<CounterComponentProps, 'name'>
+type UseCounter = ({ initialCount }: Argument) => Omit<CounterComponentProps, 'name'>
 
 export const useCounter: UseCounter = ({ initialCount }) => {
   const [state, setState] = useState<UseCounterState>(initialCount)

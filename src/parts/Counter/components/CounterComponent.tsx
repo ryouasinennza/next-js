@@ -8,12 +8,7 @@ export type CounterComponentProps = {
   upCountHandler: () => void
 }
 
-export const CounterComponent: FC<CounterComponentProps> = ({
-  count,
-  name,
-  upCountHandler,
-  downCountHandler,
-}) => {
+export const CounterComponent: FC<CounterComponentProps> = ({ count, name, upCountHandler, downCountHandler }) => {
   return (
     <CounterBox>
       <Name>{name}</Name>

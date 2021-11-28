@@ -12,7 +12,9 @@
     "start": "next start",
     "prepare": "husky install",
     "add": "git add .",
-    "commit": "npm-run-all syntax:format syntax:lint:* add"
+    "commit": "npm-run-all syntax:format syntax:lint:* add",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "date-fns": "^2.26.0",
@@ -22,13 +24,20 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@storybook/addon-actions": "^6.4.0",
+    "@storybook/addon-essentials": "^6.4.0",
+    "@storybook/addon-links": "^6.4.0",
+    "@storybook/react": "^6.4.0",
     "@types/node": "16.11.10",
     "@types/react": "17.0.37",
     "@types/styled-components": "^5.1.15",
+    "babel-loader": "^8.2.3",
     "babel-plugin-styled-components": "^2.0.1",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.4",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-storybook": "^0.5.0",
     "eslint-plugin-typescript-sort-keys": "^2.1.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^7.0.4",
