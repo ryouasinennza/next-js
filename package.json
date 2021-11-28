@@ -1,0 +1,44 @@
+{
+  "name": "my-app",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "syntax": "npm-run-all syntax:format syntax:lint:*",
+    "syntax:format": "prettier --write 'src/**/*'",
+    "syntax:lint:css": "stylelint --fix './src/**/*.tsx'",
+    "syntax:lint:js": "eslint './src/**/*.{ts,tsx}'",
+    "syntax:lint:ts": "tsc",
+    "start": "next start",
+    "prepare": "husky install",
+    "add": "git add .",
+    "commit": "npm-run-all syntax:format syntax:lint:* add"
+  },
+  "dependencies": {
+    "date-fns": "^2.26.0",
+    "next": "12.0.4",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "16.11.10",
+    "@types/react": "17.0.37",
+    "@types/styled-components": "^5.1.15",
+    "babel-plugin-styled-components": "^2.0.1",
+    "eslint": "7.32.0",
+    "eslint-config-next": "12.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-typescript-sort-keys": "^2.1.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^7.0.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
+    "typescript": "4.5.2"
+  }
+}
