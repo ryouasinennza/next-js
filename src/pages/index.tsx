@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import type { NextPage } from 'next'
 import { Counter } from '@/parts/Counter'
+import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
   return (
