@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app'
+import { FC } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
@@ -15,7 +16,7 @@ const theme = {
   },
 }
 
-export default function App({ Component, pageProps }: AppProps) {
+const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <GlobalStyle />
@@ -25,3 +26,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   )
 }
+
+export default App

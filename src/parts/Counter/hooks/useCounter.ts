@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { CounterComponentProps } from '@/parts/Counter/components'
-
 type UseCounterState = number
 
 type Argument = {
@@ -12,11 +11,11 @@ type UseCounter = ({ initialCount }: Argument) => Omit<CounterComponentProps, 'n
 export const useCounter: UseCounter = ({ initialCount }) => {
   const [state, setState] = useState<UseCounterState>(initialCount)
 
-  const upCountHandler = () => {
+  const upCountHandler = (): void => {
     const count = state + 1
     setState(count)
   }
-  const downCountHandler = () => {
+  const downCountHandler = (): void => {
     if (!state) return
     const count = state - 1
     setState(count)
