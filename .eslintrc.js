@@ -7,7 +7,7 @@ module.exports = {
     'plugin:storybook/recommended',
     'prettier',
   ],
-  plugins: ['import', 'unused-imports', 'sort-keys-fix', 'typescript-sort-keys'],
+  plugins: ['import', 'unused-imports', 'sort-keys-fix', 'typescript-sort-keys', 'testing-library'],
   settings: {
     'import/resolver': {
       typescript: {
@@ -34,7 +34,7 @@ module.exports = {
     'import/no-cycle': 'error',
     'unused-imports/no-unused-imports': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
-    "@typescript-eslint/explicit-function-return-type": "error"
+    '@typescript-eslint/explicit-function-return-type': 'error',
   },
   overrides: [
     {
@@ -49,6 +49,10 @@ module.exports = {
       rules: {
         'no-console': 'off',
       },
+    },
+    {
+      files: ['src/**/*.test.{ts.tsx}'],
+      extends: ['plugin:testing-library/react'],
     },
   ],
 }

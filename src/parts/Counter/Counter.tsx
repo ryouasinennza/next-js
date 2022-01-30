@@ -3,14 +3,18 @@ import styled from 'styled-components'
 import { counterContainer } from './containers'
 import { useCounter } from './hooks'
 
-export const Counter: VFC = () => {
+type CounterProps = {
+  name: string
+}
+
+export const Counter: VFC<CounterProps> = ({ name }) => {
   const componentProps = counterContainer()
   const { count, upCountHandler, downCountHandler } = useCounter({
     initialCount: componentProps.count,
   })
   return (
     <CounterBox>
-      <Name>{componentProps.name}</Name>
+      <Name>{name}</Name>
       <Row>
         <CounterDisplay>{count}</CounterDisplay>
         <UpButton onClick={upCountHandler}>UP</UpButton>
