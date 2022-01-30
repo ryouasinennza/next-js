@@ -1,6 +1,8 @@
 import { format } from 'date-fns'
-import { CounterComponentProps } from '@/parts/Counter/components'
-type CounterContainer = () => Pick<CounterComponentProps, 'count' | 'name'>
+type CounterContainer = () => {
+  count: number
+  name: string
+}
 
 export const counterContainer: CounterContainer = () => {
   const count = format(new Date(), 'dd')
