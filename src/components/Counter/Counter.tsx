@@ -12,6 +12,7 @@ export const Counter: VFC<CounterProps> = ({ name }) => {
   const { count, upCountHandler, downCountHandler } = useCounter({
     initialCount: componentProps.count,
   })
+
   return (
     <CounterBox>
       <Name>{name}</Name>

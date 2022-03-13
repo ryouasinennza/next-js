@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Counter } from '../parts'
+import { Counter } from '../components'
 import type { NextPage } from 'next'
 
 const Home: NextPage = () => {

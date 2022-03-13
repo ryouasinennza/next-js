@@ -4,10 +4,11 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:import/errors',
     'plugin:import/typescript',
+    'plugin:unicorn/recommended',
     'plugin:storybook/recommended',
     'prettier',
   ],
-  plugins: ['import', 'unused-imports', 'sort-keys-fix', 'typescript-sort-keys', 'testing-library'],
+  plugins: ['import', 'unused-imports', 'sort-keys-fix', 'typescript-sort-keys', 'testing-library', 'unicorn'],
   settings: {
     'import/resolver': {
       typescript: {
@@ -35,6 +36,8 @@ module.exports = {
     'unused-imports/no-unused-imports': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/explicit-function-return-type': 'error',
+    'unicorn/prevent-abbreviations': 'off',
+    'unicorn/filename-case': 'off',
   },
   overrides: [
     {
