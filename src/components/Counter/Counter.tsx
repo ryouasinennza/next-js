@@ -61,7 +61,7 @@ const Button = styled('button')`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
+  width: 110px;
   height: 50px;
   padding: 8px;
   margin: 8px;
