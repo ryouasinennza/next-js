@@ -54,6 +54,7 @@
     "babel-jest": "^27.4.6",
     "babel-loader": "^8.2.3",
     "babel-plugin-styled-components": "^2.0.1",
+    "chromatic": "^6.5.2",
     "eslint": "^8.10.0",
     "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "^8.3.0",
