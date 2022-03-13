@@ -1,10 +1,10 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import { customRender } from '../../lib'
 import { Counter } from './Counter'
 
 describe('Counter', () => {
-  it('renders a Counter', () => {
-    render(<Counter name="example" />)
-
+  test('renders a Counter', () => {
+    customRender(<Counter name="example" />)
     expect(screen.getByText('example')).not.toBeNull()
   })
 })
