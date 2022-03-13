@@ -18,8 +18,8 @@ export const Counter: VFC<CounterProps> = ({ name }) => {
       <Name>{name}</Name>
       <Row>
         <CounterDisplay>{count}</CounterDisplay>
-        <UpButton onClick={upCountHandler}>UP</UpButton>
-        <DownButton onClick={downCountHandler}>DOWN</DownButton>
+        <Button onClick={upCountHandler}>UP</Button>
+        <Button onClick={downCountHandler}>DOWN</Button>
       </Row>
     </CounterBox>
   )
@@ -57,18 +57,15 @@ const CounterDisplay = styled('div')`
   border-radius: 4px;
 `
 
-const UpButton = styled('button')`
-  width: 150px;
+const Button = styled('button')`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
   height: 50px;
   padding: 8px;
   margin: 8px;
-  font-size: 16px;
-`
-
-const DownButton = styled('button')`
-  width: 150px;
-  height: 50px;
-  padding: 8px;
-  margin: 8px;
-  font-size: 16px;
+  font-size: 28px;
+  border: 2px solid #000;
+  border-radius: 4px;
 `

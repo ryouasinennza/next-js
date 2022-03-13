@@ -24,7 +24,9 @@
     "*.{ts,tsx}": [
       "prettier --write",
       "stylelint --fix",
-      "eslint --fix"
+      "eslint --fix",
+      "bash -c 'npm run lint:ts'",
+      "bash -c 'npm run test'"
     ]
   },
   "dependencies": {
