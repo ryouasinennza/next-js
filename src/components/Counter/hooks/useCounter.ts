@@ -6,11 +6,13 @@ type Argument = {
   initialCount: UseCounterState
 }
 
-type UseCounter = ({ initialCount }: Argument) => {
+type UseCounterReturnType = {
   count: number
   downCountHandler: () => void
   upCountHandler: () => void
 }
+
+type UseCounter = ({ initialCount }: Argument) => UseCounterReturnType
 
 export const useCounter: UseCounter = ({ initialCount }) => {
   const [state, setState] = useState<UseCounterState>(initialCount)
