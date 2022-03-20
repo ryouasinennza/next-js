@@ -14,7 +14,7 @@ export const Counter: VFC<CounterProps> = ({ name, count, upCountHandler, downCo
       <Name>{name}</Name>
       <Row>
         <CounterDisplay>{count}</CounterDisplay>
-        <Button onClick={upCountHandler}>UPaa</Button>
+        <Button onClick={upCountHandler}>UP</Button>
         <Button onClick={downCountHandler}>DOWN</Button>
       </Row>
     </CounterBox>

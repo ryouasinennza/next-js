@@ -8,6 +8,6 @@ const { Default } = composeStories(stories)
 describe('Counter', () => {
   test('renders a Counter', () => {
     customRender(<Default />)
-    expect(screen.getByText('example')).not.toBeNull()
+    expect(screen.getByText('example')).toBeInTheDocument()
   })
 })
