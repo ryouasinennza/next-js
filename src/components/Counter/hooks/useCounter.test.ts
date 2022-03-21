@@ -4,12 +4,12 @@ import '@testing-library/jest-dom'
 
 describe('useCounter', () => {
   test('countの初期値は0になっていること', () => {
-    const result = renderHook(() => useCounter({ initialCount: 0 })).result
+    const result = renderHook(() => useCounter(0)).result
     expect(result.current.count).toBe(0)
   })
 
   test('+2されること', async () => {
-    const result = renderHook(() => useCounter({ initialCount: 0 })).result
+    const result = renderHook(() => useCounter(0)).result
     await act(async () => {
       await result.current.upCountHandler()
       await result.current.upCountHandler()
@@ -18,7 +18,7 @@ describe('useCounter', () => {
   })
 
   test('-1されること', () => {
-    const result = renderHook(() => useCounter({ initialCount: 2 })).result
+    const result = renderHook(() => useCounter(2)).result
     act(() => {
       result.current.downCountHandler()
     })

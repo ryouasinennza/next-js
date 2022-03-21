@@ -1,12 +1,9 @@
 import Head from 'next/head'
-import { Counter, counterContainer, useCounter } from '../components'
+import { Counter, useCounter } from '../components'
 import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
-  const componentProps = counterContainer()
-  const { count, upCountHandler, downCountHandler } = useCounter({
-    initialCount: componentProps.count,
-  })
+  const { count, upCountHandler, downCountHandler } = useCounter()
   return (
     <>
       <Head>

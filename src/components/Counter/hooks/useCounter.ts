@@ -1,10 +1,8 @@
+import { format } from 'date-fns'
 import { useState } from 'react'
+import { useEffectOnce } from '../../../lib'
 
 type UseCounterState = number
-
-type Argument = {
-  initialCount: UseCounterState
-}
 
 type UseCounterReturnType = {
   count: number
@@ -12,10 +10,17 @@ type UseCounterReturnType = {
   upCountHandler: () => void
 }
 
-type UseCounter = ({ initialCount }: Argument) => UseCounterReturnType
+type UseCounter = (initialCount?: number) => UseCounterReturnType
 
-export const useCounter: UseCounter = ({ initialCount }) => {
-  const [state, setState] = useState<UseCounterState>(initialCount)
+export const useCounter: UseCounter = (initialCount) => {
+  const [state, setState] = useState<UseCounterState>(initialCount === undefined ? 0 : initialCount)
+
+  useEffectOnce(() => {
+    if (initialCount === undefined) {
+      const count = format(new Date(), 'dd')
+      setState(Number(count))
+    }
+  })
 
   const upCountHandler = (): void => {
     const count = state + 1
