@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
 import styled from 'styled-components'
 import { Counter } from './Counter'
-import { counterContainer } from './containers'
 import { useCounter } from './hooks'
 
 type Story = ComponentStoryObj<typeof Counter>
@@ -15,10 +14,7 @@ export default {
 } as ComponentMeta<typeof Counter>
 
 const Component: typeof Counter = ({ name }) => {
-  const componentProps = counterContainer()
-  const { count, upCountHandler, downCountHandler } = useCounter({
-    initialCount: componentProps.count,
-  })
+  const { count, upCountHandler, downCountHandler } = useCounter()
   return (
     <Wrap>
       <Counter name={name} count={count} upCountHandler={upCountHandler} downCountHandler={downCountHandler} />
