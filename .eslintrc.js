@@ -17,7 +17,7 @@ module.exports = {
     },
   },
   rules: {
-    'no-console': 'error',
+    'no-console': 'warn',
     'sort-keys-fix/sort-keys-fix': 'error',
     'sort-keys': ['error', 'asc', { natural: true }],
     'typescript-sort-keys/interface': ['error', 'asc', { natural: true }],

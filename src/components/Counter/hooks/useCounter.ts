@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
 import { useState } from 'react'
-import { useEffectOnce } from '../../../lib'
+import { useEffectOnce } from '../../../hooks'
 
 type UseCounterState = number
 
