@@ -25,7 +25,7 @@ const CounterBox = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 8px;
+  padding: 10px;
 `
 
 const Name = styled('div')`
