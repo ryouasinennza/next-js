@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from 'next'
 import NextLink from 'next/link'
-import { client, endpoint, getPagePath, GetPagePathReturn } from '../lib'
-import { BlogListProps } from '../types'
+import { client, endpoint, getPagePath, GetPagePathReturn } from '../../lib'
+import { BlogListProps } from '../../types'
 
 type Props = {
   blogList: BlogListProps

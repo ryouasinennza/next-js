@@ -7,3 +7,4 @@ prettier.config.js
 jest.config.js
 jest.setup.js
 stylelint.config.js
+next-sitemap.js
