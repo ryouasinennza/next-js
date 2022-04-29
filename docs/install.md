@@ -57,8 +57,8 @@
 - そうすると insert モードになる
 - `eval "$(nodenv init -)"`を打ち
 - esc キーで insert モードから抜ける
-- :wq と打って実行
-- ターミナルで`source ~/.zshrc`を打って実行
+- `:wq` と打って実行
+- `source ~/.zshrc`を打って実行
 - 問題がでた＆分からない時は nodenv mac brew
 
 ### コードを clone(ダウンロードする)
@@ -87,12 +87,15 @@
 - https://app.microcms.io/signupでアカウント登録してください
 - 登録できたらブログのテンプレートを選びます（出来上がるまで少し時間がかかる）
 - API プレビューへ
+
   ![設定](./images/setting2.png '画像タイトル')
+
 - プレビュー画面で API キーをコピーして.env の API_KEY に貼り付けます（.env 意外に絶対書かないでください）
 - プレビュー画面で サービスドメインをコピーして.env の SERVICE_DOMAIN に貼り付けます（.env 意外に絶対書かないでください）
 - プレビュー画面で エンドポイントをコピーして.env の BLOG_ENDPOINT に貼り付けます（.env 意外に絶対書かないでください）
 - 画像の値をいれても動きません必ずご自身のものでやってください
-  ![設定](./images/setting3.png '画像タイトル')
+
+![設定](./images/setting3.png '画像タイトル')
 
 - `npm run dev`で起動させましょう
--
+- 
