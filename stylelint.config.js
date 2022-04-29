@@ -3,5 +3,6 @@ module.exports = {
   customSyntax: '@stylelint/postcss-css-in-js',
   rules: {
     'value-keyword-case': null,
+    'function-no-unknown': null,
   },
 }
