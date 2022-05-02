@@ -1,6 +1,6 @@
 ## インストール
 
-ドキュメント ./docs/install.md
+[インストール ドキュメント](https://github.com/ikedahideharu/nextjs-starterkit/blob/main/docs/install.md)
 
 ## chromatic setup
 

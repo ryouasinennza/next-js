@@ -3,8 +3,7 @@ import Error from 'next/error'
 import Head from 'next/head'
 import { FC } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { Footer, Header } from '../parts'
-import { SideBar } from '../parts/SideBar'
+import { Footer, Header, SideBar } from '../parts'
 import { GlobalStyle, theme } from '../style'
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
@@ -52,8 +51,7 @@ const ContentWrap = styled('main')`
   flex: 1;
   width: 100%;
   max-width: 1260px;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding: 0 8px;
   margin: 0 auto 120px;
   img {
     max-width: 100%;

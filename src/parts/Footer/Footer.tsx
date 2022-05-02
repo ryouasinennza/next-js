@@ -43,7 +43,7 @@ export const Footer: VFC<FooterProps> = ({ copyright, siteName, links }) => {
 }
 
 const FooterMain = styled('footer')`
-  padding: 50px 0;
+  padding: 50px 0 60px;
   color: #fff;
   background-color: #20232a;
 `
