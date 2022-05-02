@@ -35,7 +35,12 @@ module.exports = {
     'import/no-cycle': 'error',
     'unused-imports/no-unused-imports': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
-    '@typescript-eslint/explicit-function-return-type': 'error',
+    '@typescript-eslint/explicit-function-return-type': [
+      'error',
+      {
+        allowExpressions: true,
+      },
+    ],
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/filename-case': 'off',
   },

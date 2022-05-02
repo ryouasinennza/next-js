@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import styled from 'styled-components'
 import { client, endpoint, getPagePath, GetPagePathReturn } from '../../lib'
+import { devices } from '../../style'
 import { BlogContent, BlogListProps } from '../../types'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -52,13 +53,17 @@ const Content = styled('div')`
   margin: 0 auto;
 `
 
-const Body = styled('div')`
+const Body = styled.div`
   margin-top: 60px;
 `
 
 const Title = styled('h1')`
   margin-top: 60px;
-  font-size: 60px;
+  font-size: 40px;
+
+  @media ${devices.tablet} {
+    font-size: 50px;
+  }
 `
 
 export default Blog
