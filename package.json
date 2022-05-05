@@ -1,6 +1,9 @@
 {
   "name": "my-app",
   "private": true,
+  "engines": {
+    "npm": "8.1.2"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
