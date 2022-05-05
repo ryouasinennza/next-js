@@ -1,14 +1,8 @@
-# このリポジトリについて
+# next.js starter kit
 
-## 前提条件
 
-- mac
-- github のアカウント
-
-## インストール
-
-[インストール ドキュメント](https://github.com/ikedahideharu/nextjs-starterkit/blob/main/docs/install.md)
-
-## 開発方法
-
-[ドキュメント](https://github.com/ikedahideharu/nextjs-starterkit/blob/main/docs/develop.md)
+## chromatic
+- アカウント登録
+- https://www.chromatic.com/
+- github 連携
+- https://www.chromatic.com/docs/github-actions
