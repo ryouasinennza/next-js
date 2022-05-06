@@ -48,7 +48,7 @@
     "@storybook/addon-postcss": "2.0.0",
     "@storybook/react": "6.4.22",
     "@storybook/testing-react": "1.2.4",
-    "@stylelint/postcss-css-in-js": "0.37.3",
+    "@stylelint/postcss-css-in-js": "0.38.0",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "7.0.2",
