@@ -9,5 +9,9 @@
       "depTypeList": ["devDependencies"],
       "automerge": true
     }
-  ]
+  ],
+  "ignoreDeps": ["@types/node", "npm"],
+  "nodenv": {
+    "enabled": false
+  }
 }
