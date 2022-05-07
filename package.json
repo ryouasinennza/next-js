@@ -2,7 +2,7 @@
   "name": "my-app",
   "private": true,
   "engines": {
-    "npm": "8.1.2"
+    "npm": "8.9.0"
   },
   "scripts": {
     "dev": "next dev",
