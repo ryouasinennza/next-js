@@ -1,9 +1,19 @@
 {
   "extends": ["config:base"],
   "timezone": "Asia/Tokyo",
-  "schedule": ["every weekend"],
+  "schedule": ["before 3am on the first day of the month"],
   "labels": ["renovate"],
-  "patch": { "automerge": true },
+  "ignorePaths": [".github/*"],
+  "major": {
+    "enabled": false
+  },
+  "minor": {
+    "stabilityDays": 7
+  },
+  "patch": {
+    "stabilityDays": 7,
+    "automerge": true
+  },
   "packageRules": [
     {
       "depTypeList": ["devDependencies"],
