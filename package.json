@@ -21,7 +21,8 @@
     "test": "jest",
     "check": "npm run lint && npm run format && npm run test",
     "commit": "git add . && lint-staged -v",
-    "update": "npx -p npm-check-updates -c 'ncu -t minor -u'",
+    "update": "npx -p npm-check-updates -c 'ncu -t -u'",
+    "minor-update": "npx -p npm-check-updates -c 'ncu -t minor -u'",
     "prepare": "husky install"
   },
   "lint-staged": {
