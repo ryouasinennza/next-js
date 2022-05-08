@@ -1,6 +1,5 @@
 # next.js starter kit
 
-
 ## chromatic
 - アカウント登録
 - https://www.chromatic.com/
