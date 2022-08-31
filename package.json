@@ -24,7 +24,7 @@
     "update": "npx -p npm-check-updates -c 'ncu -t -u'",
     "minor-update": "npx -p npm-check-updates -c 'ncu -t minor -u'",
     "prepare": "husky install",
-    "chromatic": "npx chromatic --project-token=02ce2aabc803"
+    "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
