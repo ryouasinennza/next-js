@@ -30,7 +30,7 @@ const Button = styled('button')`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 30px;
+  height: 40px;
   padding: 8px;
   border: 1px solid black;
   border-radius: 4px;
