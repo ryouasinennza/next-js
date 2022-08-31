@@ -23,7 +23,8 @@
     "commit": "git add . && lint-staged -v",
     "update": "npx -p npm-check-updates -c 'ncu -t -u'",
     "minor-update": "npx -p npm-check-updates -c 'ncu -t minor -u'",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "chromatic": "npx chromatic --project-token=02ce2aabc803"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -85,5 +86,8 @@
     "stylelint-config-standard": "28.0.0",
     "stylelint-order": "5.0.0",
     "typescript": "4.8.2"
-  }
+  },
+  "version": "",
+  "readme": "ERROR: No README data found!",
+  "_id": "nextjs-starterkit@"
 }
