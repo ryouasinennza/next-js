@@ -6,7 +6,7 @@ type ChangeCount = () => void
 type UpDownState = 'up' | 'down'
 type ChangeUpDown = () => void
 
-export type UseCounterReturn = {
+type UseCounterReturn = {
   changeCount: ChangeCount
   changeUpDown: ChangeUpDown
   countState: CountState

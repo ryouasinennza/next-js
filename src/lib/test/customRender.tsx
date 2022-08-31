@@ -1,5 +1,5 @@
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
-import { ReactNode, VFC, ReactElement } from 'react'
+import { ReactNode, FC, ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { theme } from '../../style'
 
@@ -7,7 +7,7 @@ type AllTheProvidersProps = {
   children: ReactNode
 }
 
-const AllTheProviders: VFC<AllTheProvidersProps> = ({ children }) => {
+const AllTheProviders: FC<AllTheProvidersProps> = ({ children }) => {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>
 }
 
