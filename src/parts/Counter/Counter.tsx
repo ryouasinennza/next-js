@@ -14,6 +14,7 @@ export const Counter: VFC<CounterProps> = ({ countText, upDownText }) => {
     <Wrap>
       <Button onClick={counter.changeUpDown}>{upDownText}</Button>
       <Text>{counter.upDownState}!</Text>
+      aaa
       <Button onClick={counter.changeCount}>{countText}</Button>
       <Text>{counter.countState}!</Text>
     </Wrap>
