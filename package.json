@@ -2,25 +2,24 @@
   "name": "nextjs-starterkit",
   "private": true,
   "engines": {
-    "node": "16.15.0",
-    "npm": "8.5.5"
+    "node": "16.17.1",
+    "npm": "8.15.0"
+  },
+  "volta": {
+    "node": "16.17.1",
+    "npm": "8.15.0"
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --no-lint ",
     "start": "next start",
-    "postbuild": "next-sitemap",
     "sb": "start-storybook -p 6006",
-    "sb-build": "build-storybook",
-    "sb-update": "sb upgrade",
-    "lint": "run-p lint:*",
-    "lint:style": "stylelint --fix './src/**/*.tsx'",
-    "lint:es": "eslint --fix './src/**/*.{ts,tsx}'",
-    "lint:ts": "tsc",
+    "stylelint": "stylelint --fix './src/**/*.tsx'",
+    "eslint": "eslint --fix './src/**/*.{ts,tsx}'",
     "format": "prettier --write 'src/**/*'",
+    "tsc": "tsc",
     "test": "jest",
-    "check": "npm run lint && npm run format && npm run test",
-    "commit": "git add . && lint-staged -v",
+    "commit": "git add .",
     "update": "npx -p npm-check-updates -c 'ncu -t -u'",
     "minor-update": "npx -p npm-check-updates -c 'ncu -t minor -u'",
     "prepare": "husky install",
@@ -30,9 +29,7 @@
     "*.{ts,tsx}": [
       "prettier --write",
       "stylelint --fix",
-      "eslint --fix",
-      "bash -c 'npm run lint:ts'",
-      "bash -c 'npm run test'"
+      "eslint --fix"
     ]
   },
   "dependencies": {
@@ -89,5 +86,11 @@
   },
   "version": "",
   "readme": "ERROR: No README data found!",
-  "_id": "nextjs-starterkit@"
+  "_id": "nextjs-starterkit@",
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2
+  }
 }
