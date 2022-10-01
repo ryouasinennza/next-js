@@ -14,6 +14,7 @@
     "build": "next build --no-lint ",
     "start": "next start",
     "sb": "start-storybook -p 6006",
+    "sb-build": "build-storybook",
     "stylelint": "stylelint --fix './src/**/*.tsx'",
     "eslint": "eslint --fix './src/**/*.{ts,tsx}'",
     "format": "prettier --write 'src/**/*'",
