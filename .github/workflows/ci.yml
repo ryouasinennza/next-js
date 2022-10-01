@@ -16,11 +16,14 @@ jobs:
       - name: Get Node version
         id: node_version
         run: |
-          VERSION=`cat .node-version`
-          echo ::set-output name=value::$VERSION
+          PACKAGE_JSON=`cat ./package.json`
+          PACKAGE_JSON="${PACKAGE_JSON//'%'/'%25'}"
+          PACKAGE_JSON="${PACKAGE_JSON//$'\n'/'%0A'}"
+          PACKAGE_JSON="${PACKAGE_JSON//$'\r'/'%0D'}"
+          echo "::set-output name=packageJson::$PACKAGE_JSON"
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ steps.node_version.outputs.value }}
+          node-version: ${{ fromJson(steps.node_version.outputs.packageJson).volta.node }}
       - uses: actions/cache@v3
         id: node_modules_cache_id
         env:
