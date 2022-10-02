@@ -1,5 +1,6 @@
+import { expect } from '@storybook/jest';
 import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
-import { screen, userEvent } from '@storybook/testing-library'
+import { userEvent, within, waitFor } from '@storybook/testing-library'
 import { Input } from './Input'
 
 type Story = ComponentStoryObj<typeof Input>
@@ -25,8 +26,11 @@ export const PlayFunction: Story = {
   parameters: {
     chromatic: { delay: getChromaticDelay(typeText.length, typeDelay) },
   },
-  play: async () => {
-    const inputElement = screen.getByRole('textbox')
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const inputElement = canvas.getByRole('textbox')
     await userEvent.type(inputElement, typeText, { delay: typeDelay })
+
+    await waitFor(() => expect(inputElement).toHaveValue(typeText))
   },
 }
