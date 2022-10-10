@@ -31,6 +31,6 @@ const GetStatic: NextPageWithLayout<Props> = ({ size }) => {
 }
 
 // layoutにすることによってページ移動時にLayout内のfetchが動かないmemo化？される
-GetStatic.getLayout = (page) => <Layout title="home">{page}</Layout>
+GetStatic.getLayout = (page) => <Layout title="GetStatic">{page}</Layout>
 
 export default GetStatic
