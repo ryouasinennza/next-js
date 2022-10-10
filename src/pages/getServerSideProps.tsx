@@ -30,6 +30,6 @@ const GetServerSide: NextPageWithLayout<Props> = ({ name }) => {
 }
 
 // layoutにすることによってページ移動時にLayout内のfetchが動かないmemo化？される
-GetServerSide.getLayout = (page) => <Layout title="home">{page}</Layout>
+GetServerSide.getLayout = (page) => <Layout title="GetServerSide">{page}</Layout>
 
 export default GetServerSide
