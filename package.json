@@ -20,7 +20,7 @@
     "format": "prettier --write 'src/**/*'",
     "tsc": "tsc",
     "test": "jest",
-    "commit": "git add .",
+    "commit": "git add . && lint-staged",
     "update": "npx -p npm-check-updates -c 'ncu -t -u'",
     "minor-update": "npx -p npm-check-updates -c 'ncu -t minor -u'",
     "prepare": "husky install",
@@ -38,7 +38,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "ress": "5.0.2",
-    "styled-components": "5.3.5"
+    "styled-components": "5.3.5",
+    "swr": "1.3.0"
   },
   "devDependencies": {
     "@babel/core": "7.18.13",

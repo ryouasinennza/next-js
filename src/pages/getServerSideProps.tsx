@@ -1,4 +1,7 @@
-import { GetServerSideProps, NextPage } from 'next'
+import { GetServerSideProps } from 'next'
+import { Layout } from '../parts/Layout'
+import { NextPageWithLayout } from './_app'
+// import { useLoginLogout } from '../parts/Layout/useLoginLogout'
 
 type Props = {
   name: string
@@ -14,7 +17,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 }
 
-const Home: NextPage<Props> = ({ name }) => {
+const GetServerSide: NextPageWithLayout<Props> = ({ name }) => {
+  // const { data } = useLoginLogout()
+  // console.log('Page', data)
   return (
     <div>
       <div>npm run build → npm start を実行</div>
@@ -24,4 +29,7 @@ const Home: NextPage<Props> = ({ name }) => {
   )
 }
 
-export default Home
+// layoutにすることによってページ移動時にLayout内のfetchが動かないmemo化？される
+GetServerSide.getLayout = (page) => <Layout title="home">{page}</Layout>
+
+export default GetServerSide
