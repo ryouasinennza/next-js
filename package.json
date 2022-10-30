@@ -2,11 +2,11 @@
   "name": "nextjs-starterkit",
   "private": true,
   "engines": {
-    "node": "18.12.0",
+    "node": "16.18.0",
     "npm": "8.19.2"
   },
   "volta": {
-    "node": "18.12.0",
+    "node": "16.18.0",
     "npm": "8.19.2"
   },
   "scripts": {
@@ -28,7 +28,7 @@
     "ncu-all-upgrade": "npx npm-check-updates --upgrade",
     "prepare": "husky install",
     "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN",
-    "clean": "npm cache clean --force && rm -rf ~/.npm ./storybook-static ./out ./node_modules ./tsconfig.tsbuildinfo ./pnpm-lock.yaml"
+    "clean": "npm cache clean --force && rm -rf ~/.npm ./.next ./storybook-static ./out ./node_modules ./tsconfig.tsbuildinfo ./pnpm-lock.yaml"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
