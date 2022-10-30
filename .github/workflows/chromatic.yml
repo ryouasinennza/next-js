@@ -13,9 +13,34 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v1
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+
+      - name: Get Node version
+        id: node_version
+        run: |
+          PACKAGE_JSON=`cat ./package.json`
+          PACKAGE_JSON="${PACKAGE_JSON//'%'/'%25'}"
+          PACKAGE_JSON="${PACKAGE_JSON//$'\n'/'%0A'}"
+          PACKAGE_JSON="${PACKAGE_JSON//$'\r'/'%0D'}"
+          echo "::set-output name=packageJson::$PACKAGE_JSON"
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ fromJson(steps.node_version.outputs.packageJson).volta.node }}
+          cache: 'pnpm'
+
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
         uses: chromaui/action@v1

@@ -11,12 +11,8 @@ const Home: NextPageWithLayout = () => {
   return (
     <>
       <Wrap>
-        <NextLink href="/getServerSideProps">
-          <a>getServerSideProps</a>
-        </NextLink>
-        <NextLink href="/getStaticProps">
-          <a>getStaticProps</a>
-        </NextLink>
+        <NextLink href="/getServerSideProps">getServerSideProps</NextLink>
+        <NextLink href="/getStaticProps">getStaticProps</NextLink>
       </Wrap>
       <Counter countText="加算減算" upDownText="加算減算切替" />
     </>

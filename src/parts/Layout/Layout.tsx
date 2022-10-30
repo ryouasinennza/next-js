@@ -11,7 +11,6 @@ type LayoutProps = {
 export const Layout: FC<LayoutProps> = ({ children, title = 'Layouts Example' }) => {
   const { data } = useLoginLogout()
 
-  console.log('Layout', data)
   return (
     <>
       <Head>

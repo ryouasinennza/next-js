@@ -1,5 +1,8 @@
 # next.js starter kit
 
+## install 
+`pnpm install`
+
 ## chromatic
 - アカウント登録
 - https://www.chromatic.com/
