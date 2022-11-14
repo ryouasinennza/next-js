@@ -1,4 +1,4 @@
-import { expect } from '@storybook/jest';
+import { expect } from '@storybook/jest'
 import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
 import { userEvent, within, waitFor } from '@storybook/testing-library'
 import { Input } from './Input'

@@ -1,52 +1,50 @@
 name: CI
 on: [pull_request]
 jobs:
-  CI:
-    name: Test
-    runs-on: ubuntu-22.04
+  code-test:
+    runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.10.0
         with:
           access_token: ${{ github.token }}
-
       - name: Checkout repository
         uses: actions/checkout@v3
-
       - name: Get Node version
         id: node_version
         run: |
-          PACKAGE_JSON=`cat ./package.json`
-          PACKAGE_JSON="${PACKAGE_JSON//'%'/'%25'}"
-          PACKAGE_JSON="${PACKAGE_JSON//$'\n'/'%0A'}"
-          PACKAGE_JSON="${PACKAGE_JSON//$'\r'/'%0D'}"
-          echo "::set-output name=packageJson::$PACKAGE_JSON"
-      - uses: actions/setup-node@v3
+          VERSION=`cat ./package.json | jq -r '.volta.node'`
+          echo "{name}={value}" >> $VERSION
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ fromJson(steps.node_version.outputs.packageJson).volta.node }}
+          node-version: ${{ steps.node_version.outputs.value }}
+      - uses: pnpm/action-setup@v2.2.4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
       - uses: actions/cache@v3
-        id: node_modules_cache_id
-        env:
-          cache-name: cache-node-modules
+        name: Setup pnpm cache
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-      - run: echo '${{ toJSON(steps.node_modules_cache_id.outputs) }}'
-
-      - name: node_modules install
-        if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
-        run: npm ci
-
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm install
       - name: node version
         run: |
           node -v
-          npm -v
-
-      - name: node_modules
-        run: npm ls --depth=0
+          pnpm -v
 
       - name: jest
-        run: npm run test
-
+        run: pnpm test
       - name: tsc
-        run: npm run tsc
+        run: pnpm tsc
