@@ -1,6 +1,7 @@
 {
   "name": "nextjs-starterkit",
   "private": true,
+  "packageManager": "pnpm@7.16.1",
   "engines": {
     "node": "16.18.1",
     "pnpm": "7.16.1"
