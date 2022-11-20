@@ -2,6 +2,7 @@
 . "$(dirname "$0")/_/husky.sh"
 
 node -v
-npm -v
+pnpm -v
 
-npm run commit
+git add .
+npx lint-staged --verbose
