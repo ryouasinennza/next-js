@@ -1,3 +1,13 @@
+export const devices = {
+  desktop: '(min-width: 2560px)',
+  laptop: '(min-width: 1024px)',
+  laptopL: '(min-width: 1440px)',
+  mobileL: '(min-width: 425px)',
+  mobileM: '(min-width: 375px)',
+  mobileS: '(min-width: 320px)',
+  tablet: '(min-width: 768px)',
+}
+
 export const theme = {
   colors: {
     background: 'gray',
@@ -7,26 +17,7 @@ export const theme = {
       white: '#fff',
     },
   },
-}
-
-export const sizes = {
-  desktop: '2560px',
-  laptop: '1024px',
-  laptopL: '1440px',
-  mobileL: '425px',
-  mobileM: '375px',
-  mobileS: '320px',
-  tablet: '768px',
-}
-
-export const devices = {
-  desktop: `(min-width: ${sizes.desktop})`,
-  laptop: `(min-width: ${sizes.laptop})`,
-  laptopL: `(min-width: ${sizes.laptopL})`,
-  mobileL: `(min-width: ${sizes.mobileL})`,
-  mobileM: `(min-width: ${sizes.mobileM})`,
-  mobileS: `(min-width: ${sizes.mobileS})`,
-  tablet: `(min-width: ${sizes.tablet})`,
+  devices,
 }
 
 export type Theme = typeof theme
