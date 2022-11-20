@@ -2,23 +2,20 @@
   "name": "nextjs-starterkit",
   "private": true,
   "engines": {
-    "node": "16.18.0",
-    "npm": "8.19.2"
+    "node": "16.18.1",
+    "pnpm": "7.16.1"
   },
   "volta": {
-    "node": "16.18.0",
-    "npm": "8.19.2"
+    "node": "16.18.1",
+    "pnpm": "7.16.1"
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build --no-lint ",
+    "build": "next build --no-lint",
     "start": "next start",
     "sb": "start-storybook -p 6006",
     "sb-build": "build-storybook",
-    "lint": "pnpm stylelint & eslint & format",
-    "stylelint": "stylelint --fix './src/**/*.{ts,tsx}'",
-    "eslint": "eslint --fix './src/**/*.{ts,tsx}'",
-    "format": "prettier --write './src/**/*'",
+    "lint": "stylelint --fix './src/**/*.{ts,tsx}' & eslint --fix './src/**/*.{ts,tsx}' & prettier --write './src/**/*'",
     "tsc": "tsc",
     "test": "jest",
     "commit": "git add .",
@@ -33,9 +30,9 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "prettier --write",
+      "eslint --fix",
       "stylelint --fix",
-      "eslint --fix"
+      "prettier --write"
     ]
   },
   "dependencies": {
