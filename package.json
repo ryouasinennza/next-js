@@ -1,13 +1,13 @@
 {
   "name": "nextjs-starterkit",
   "private": true,
-  "packageManager": "pnpm@7.17.1",
   "engines": {
     "node": "18.12.1",
-    "pnpm": "7.17.1"
+    "pnpm": "7.18.0"
   },
   "volta": {
-    "node": "18.12.1"
+    "node": "18.12.1",
+    "pnpm": "7.18.0"
   },
   "scripts": {
     "dev": "next dev",
