@@ -1,4 +1,4 @@
-import { VFC } from 'react'
+import { FC } from 'react'
 import styled from 'styled-components'
 import { useCounter } from './hooks'
 
@@ -7,7 +7,7 @@ type CounterProps = {
   upDownText: string
 }
 
-export const Counter: VFC<CounterProps> = ({ countText, upDownText }) => {
+export const Counter: FC<CounterProps> = ({ countText, upDownText }) => {
   const counter = useCounter()
 
   return (
@@ -32,7 +32,7 @@ const Button = styled('button')`
   justify-content: center;
   height: 40px;
   padding: 8px;
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 4px;
 `
 
