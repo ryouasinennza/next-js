@@ -1,17 +1,24 @@
-import { NextPage } from 'next'
-import NextLink from 'next/link'
 import styled from 'styled-components'
+import useSWR from 'swr'
 import { Counter } from '../parts'
+import { CustomNextPage } from '../types/CustomNextTypes'
 
-const Home: NextPage = () => {
+type GetNameResponse = {
+  name: string
+}
+
+const Home: CustomNextPage = ({ changeTheme }) => {
+  const { data, error, isLoading } = useSWR<GetNameResponse>('/api/getName')
+
+  if (error) return <div>failed to load</div>
+  if (isLoading) return <div>loading...</div>
+
   return (
-    <>
-      <Wrap>
-        <NextLink href="/getServerSideProps">getServerSideProps</NextLink>
-        <NextLink href="/getStaticProps">getStaticProps</NextLink>
-      </Wrap>
+    <Wrap>
+      <button onClick={() => changeTheme()}>テーマを変える</button>
+      <div>{data && data.name}</div>
       <Counter countText="加算減算" upDownText="加算減算切替" />
-    </>
+    </Wrap>
   )
 }
 

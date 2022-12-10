@@ -1,23 +1,38 @@
 export const devices = {
-  desktop: '(min-width: 2560px)',
-  laptop: '(min-width: 1024px)',
-  laptopL: '(min-width: 1440px)',
-  mobileL: '(min-width: 425px)',
-  mobileM: '(min-width: 375px)',
-  mobileS: '(min-width: 320px)',
-  tablet: '(min-width: 768px)',
+  pc: '(min-width: 1000px)',
+  sp: '(min-width: 320px)',
 }
 
-export const theme = {
+const lightTheme = {
   colors: {
-    background: 'gray',
-    primary: '#0070f3',
-    textColors: {
-      black: '#333',
-      white: '#fff',
-    },
+    background: '#fff',
+    border: '#363537',
+    text: '#363537',
   },
   devices,
-}
+  themeType: 'light',
+} as const
 
-export type Theme = typeof theme
+const darkTheme = {
+  colors: {
+    background: '#5e5e5e',
+    border: '#FAFAFA',
+    text: '#FAFAFA',
+  },
+  devices,
+  themeType: 'dark',
+} as const
+
+type GetTheme = (theme: 'light' | 'dark') => typeof lightTheme | typeof darkTheme
+
+export const getTheme: GetTheme = (theme) => (lightTheme.themeType === theme ? lightTheme : darkTheme)
+
+export type Theme = {
+  colors: {
+    background: typeof lightTheme.colors.background | typeof darkTheme.colors.background
+    border: typeof lightTheme.colors.border | typeof darkTheme.colors.border
+    text: typeof lightTheme.colors.text | typeof darkTheme.colors.text
+  }
+  devices: typeof devices
+  themeType: 'light' | 'dark'
+}
