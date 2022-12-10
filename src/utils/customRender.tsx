@@ -1,14 +1,14 @@
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import { ReactNode, FC, ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { theme } from '../style'
+import { getTheme } from '../style'
 
 type AllTheProvidersProps = {
   children: ReactNode
 }
 
 const AllTheProviders: FC<AllTheProvidersProps> = ({ children }) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  return <ThemeProvider theme={getTheme('light')}>{children}</ThemeProvider>
 }
 
 type CustomRender = (ui: ReactElement, options?: RenderOptions) => RenderResult
