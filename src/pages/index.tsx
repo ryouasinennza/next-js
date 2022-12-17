@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import useSWR from 'swr'
-import { Counter } from '../parts'
+import { Counter } from '../parts/Counter'
 import { CustomNextPage } from '../types/CustomNextTypes'
 
 type GetNameResponse = {
   name: string
 }
 
-const Home: CustomNextPage = ({ changeTheme }) => {
+const Home: CustomNextPage = ({ themeToggle }) => {
   const { data, error, isLoading } = useSWR<GetNameResponse>('/api/getName')
 
   if (error) return <div>failed to load</div>
@@ -15,7 +15,7 @@ const Home: CustomNextPage = ({ changeTheme }) => {
 
   return (
     <Wrap>
-      <button onClick={() => changeTheme()}>テーマを変える</button>
+      <button onClick={() => themeToggle()}>テーマを変える</button>
       <div>{data && data.name}</div>
       <Counter countText="加算減算" upDownText="加算減算切替" />
     </Wrap>
@@ -29,5 +29,5 @@ const Wrap = styled('div')`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 30px;
+  margin: 32px;
 `

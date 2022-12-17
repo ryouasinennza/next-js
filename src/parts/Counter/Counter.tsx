@@ -23,7 +23,7 @@ export const Counter: FC<CounterProps> = ({ countText, upDownText }) => {
 const Wrap = styled('div')`
   display: flex;
   flex-direction: column;
-  margin: 30px;
+  margin: 32px;
 `
 
 const Button = styled('button')`
@@ -32,10 +32,10 @@ const Button = styled('button')`
   justify-content: center;
   height: 40px;
   padding: 8px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid ${({ theme }) => theme.border};
   border-radius: 4px;
 `
 
 const Text = styled('span')`
-  padding: 4px;
+  padding: 8px;
 `
