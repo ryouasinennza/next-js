@@ -1,20 +1,15 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { SWRConfig } from 'swr'
-import { getTheme, GlobalStyle } from '../style'
+import { getTheme, GlobalStyle, useTheme } from '../styles'
 
 const fetcher = (url: string): Promise<unknown> => fetch(url).then((res) => res.json())
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
-
-  const changeTheme = (): void => {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
-  }
-
-  const customPageProps = { ...pageProps, changeTheme: changeTheme }
+  const [themeType, themeToggle] = useTheme()
+  const customPageProps = { ...pageProps, themeToggle }
 
   return (
     <>
@@ -29,7 +24,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           fetcher,
         }}
       >
-        <ThemeProvider theme={getTheme(theme)}>
+        <ThemeProvider theme={getTheme(themeType)}>
           <GlobalStyle />
           <Component {...customPageProps} />
         </ThemeProvider>

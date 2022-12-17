@@ -3,8 +3,8 @@ import 'ress/dist/ress.min.css'
 
 export const GlobalStyle = createGlobalStyle`
   * {
-    color:${({ theme }) => theme.colors.text};
-    background-color: ${({ theme }) => theme.colors.background};
+    color:${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.background};
   }
   
   html {

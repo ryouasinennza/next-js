@@ -1,7 +1,7 @@
 import { composeStories } from '@storybook/testing-react'
 import { act, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { customRender } from '../../utils'
+import { customRender } from '../../utils/customRender'
 import * as stories from './Counter.stories'
 
 describe('Counter', () => {
