@@ -3,7 +3,8 @@ import Head from 'next/head'
 import { FC } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { SWRConfig } from 'swr'
-import { getTheme, GlobalStyle, useTheme } from '../styles'
+import { GlobalStyle } from '../styles/GlobalStyle'
+import { getTheme, useTheme } from '../styles/theme'
 
 const fetcher = (url: string): Promise<unknown> => fetch(url).then((res) => res.json())
 

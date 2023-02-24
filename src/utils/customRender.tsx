@@ -1,7 +1,7 @@
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import { ReactNode, FC, ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { getTheme } from '../styles'
+import { getTheme } from '../styles/theme'
 
 type AllTheProvidersProps = {
   children: ReactNode

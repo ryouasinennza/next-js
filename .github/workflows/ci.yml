@@ -42,4 +42,4 @@ jobs:
       - name: jest
         run: pnpm test
       - name: tsc
-        run: pnpm tsc
+        run: pnpm type

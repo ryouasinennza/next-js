@@ -1,5 +1,6 @@
 import { ThemeProvider } from 'styled-components'
-import { getTheme, GlobalStyle } from '../src/styles' // ライブラリから読み込むとplayが使えなくなる
+import {  GlobalStyle } from '../src/styles/GlobalStyle'
+import { getTheme } from '../src/styles/theme'
 
 export const globalTypes = {
   theme: {
