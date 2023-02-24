@@ -9,12 +9,6 @@ source ~/.zshrc
 # https://volta.sh
 ```
 
-## package manager install
-
-```bash
-sh ./package-manager-install.sh
-```
-
 ## node_modules install
 
 ```bash

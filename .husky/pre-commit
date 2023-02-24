@@ -4,5 +4,4 @@
 node -v
 pnpm -v
 
-git add .
 npx lint-staged --verbose
