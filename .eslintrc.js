@@ -8,7 +8,14 @@ module.exports = {
     'plugin:storybook/recommended',
     'prettier',
   ],
-  plugins: ['import', 'unused-imports', 'sort-keys-fix', 'typescript-sort-keys', 'testing-library', 'unicorn'],
+  plugins: [
+    'import',
+    'unused-imports',
+    'sort-destructure-keys',
+    'typescript-sort-keys',
+    'testing-library',
+    'unicorn',
+  ],
   settings: {
     'import/resolver': {
       typescript: {
@@ -17,11 +24,10 @@ module.exports = {
     },
   },
   rules: {
-    'no-console': 'warn',
-    'sort-keys-fix/sort-keys-fix': 'error',
-    'sort-keys': ['error', 'asc', { natural: true }],
-    'typescript-sort-keys/interface': ['error', 'asc', { natural: true }],
-    'typescript-sort-keys/string-enum': ['error', 'asc', { natural: true }],
+    'no-console': 'error',
+    "sort-destructure-keys/sort-destructure-keys": 'error',
+    'typescript-sort-keys/interface': 'error',
+    'typescript-sort-keys/string-enum': 'error',
     'import/order': [
       'error',
       {
@@ -43,6 +49,16 @@ module.exports = {
     ],
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/filename-case': 'off',
+    'react/jsx-sort-props': [
+      'error',
+      {
+        ignoreCase: true,
+        shorthandFirst: true,
+        callbacksLast: true,
+        noSortAlphabetically: false,
+        reservedFirst: true,
+      },
+    ],
   },
   overrides: [
     {

@@ -1,16 +1,13 @@
 import { useState } from 'react'
 import { useEffectOnce } from '../utils/useEffectOnce'
 
-const lightTheme = {
-  background: '#fff',
-  border: '#363537',
-  text: '#363537',
-} as const
-
-const darkTheme = {
-  background: '#5e5e5e',
-  border: '#FAFAFA',
-  text: '#FAFAFA',
+export const primitiveColors = {
+  black: '#333',
+  white: '#fff',
+  gray: '#919191',
+  green: '#11A6A1',
+  blue: '#3B72D8',
+  red: '#D70015',
 } as const
 
 const THEME_TYPES = {
@@ -18,20 +15,98 @@ const THEME_TYPES = {
   LIGHT: 'light',
 } as const
 
-type ThemeType = typeof THEME_TYPES[keyof typeof THEME_TYPES]
-
-type GetTheme = (themeType: ThemeType) => typeof lightTheme | typeof darkTheme
-
-export const getTheme: GetTheme = (themeType = THEME_TYPES.LIGHT) =>
-  themeType === THEME_TYPES.LIGHT ? lightTheme : darkTheme
+type ThemeType = (typeof THEME_TYPES)[keyof typeof THEME_TYPES]
 
 export type Theme = {
-  background: typeof lightTheme.background | typeof darkTheme.background
-  border: typeof lightTheme.border | typeof darkTheme.border
-  text: typeof lightTheme.text | typeof darkTheme.text
+  background: {
+    alert: string
+    disable: string
+    hover: string
+    primary: string
+    secondary: string
+  }
+  border: {
+    alert: string
+    disable: string
+    divider: string
+    primary: string
+    secondary: string
+  }
+  text: {
+    alert: string
+    disable: string
+    link: string
+    placeHolder: string
+    primary: string
+    secondary: string
+    visited: string
+  }
 }
 
-const LOCAL_STORAGE_KEY = 'style_theme'
+type ThemeColors = {
+  dark: Theme
+  light: Theme
+}
+
+export const themeColors: ThemeColors = {
+  dark: {
+    background: {
+      alert: primitiveColors.red,
+      disable: primitiveColors.gray,
+      hover: primitiveColors.white,
+      primary: primitiveColors.black,
+      secondary: primitiveColors.white,
+    },
+    border: {
+      alert: primitiveColors.red,
+      disable: primitiveColors.gray,
+      divider: primitiveColors.gray,
+      primary: primitiveColors.black,
+      secondary: primitiveColors.white,
+    },
+    text: {
+      alert: primitiveColors.red,
+      disable: primitiveColors.gray,
+      link: primitiveColors.blue,
+      placeHolder: primitiveColors.gray,
+      primary: primitiveColors.black,
+      secondary: primitiveColors.white,
+      visited: primitiveColors.red,
+    },
+  },
+  light: {
+    background: {
+      alert: primitiveColors.red,
+      disable: primitiveColors.gray,
+      hover: primitiveColors.white,
+      primary: primitiveColors.black,
+      secondary: primitiveColors.white,
+    },
+    border: {
+      alert: primitiveColors.red,
+      disable: primitiveColors.gray,
+      divider: primitiveColors.gray,
+      primary: primitiveColors.black,
+      secondary: primitiveColors.white,
+    },
+    text: {
+      alert: primitiveColors.red,
+      disable: primitiveColors.gray,
+      link: primitiveColors.blue,
+      placeHolder: primitiveColors.gray,
+      primary: primitiveColors.black,
+      secondary: primitiveColors.white,
+      visited: primitiveColors.red,
+    },
+  },
+}
+
+type GetTheme = (themeType: ThemeType) => Theme
+
+export const getTheme: GetTheme = (themeType = THEME_TYPES.LIGHT) =>
+  themeType === THEME_TYPES.LIGHT ? themeColors.light : themeColors.dark
+
+const LOCAL_STORAGE_KEY = 'next_js_theme'
 
 type UseTheme = () => [ThemeType, () => void]
 

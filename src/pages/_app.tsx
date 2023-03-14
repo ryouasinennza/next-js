@@ -16,9 +16,18 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
     <>
       <Head>
         <title>Example</title>
-        <meta name="viewport" content="width=device-width" />
-        <meta name="description" content="blog" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta
+          content="width=device-width"
+          name="viewport"
+        />
+        <meta
+          content="blog"
+          name="description"
+        />
+        <link
+          href="/favicon.ico"
+          rel="icon"
+        />
       </Head>
       <SWRConfig
         value={{

@@ -11,6 +11,11 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 14px;
   }
   
+  body {
+    max-width: 100vw;
+    min-height: 100vh;
+  }
+  
   a {
     text-decoration: none;
   }
