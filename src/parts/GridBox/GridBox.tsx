@@ -1,8 +1,8 @@
 import { Property } from 'csstype'
 import { CSSProperties, FC, ReactNode } from 'react'
 import styled from 'styled-components'
-import { cssMarginValue, Margin } from '../../utils/cssMarginValue'
-import { cssPaddingValue, Padding } from '../../utils/cssPaddingValue'
+import { cssMarginValue, Margin } from '../../styles/cssMarginValue'
+import { cssPaddingValue, Padding } from '../../styles/cssPaddingValue'
 
 type Grid = 0 | 4 | 8 | 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52
 

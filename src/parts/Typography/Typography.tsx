@@ -1,7 +1,7 @@
 import { FC, ReactNode, memo } from 'react'
 import styled from 'styled-components'
+import { cssMarginValue, Margin } from '../../styles/cssMarginValue'
 import { Theme } from '../../styles/theme'
-import { cssMarginValue, Margin } from '../../utils/cssMarginValue'
 
 export const fontWeight = {
   regular: 400,

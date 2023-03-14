@@ -1,7 +1,7 @@
 import { Property } from 'csstype'
 import { FC, ReactNode } from 'react'
 import styled from 'styled-components'
-import { Typography } from '../Typography/Typography'
+import { Typography } from '../Typography'
 
 type ButtonProps = {
   children: ReactNode

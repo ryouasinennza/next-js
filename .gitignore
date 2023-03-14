@@ -44,3 +44,5 @@ public/sitemap*
 public/robots.txt
 
 storybook-static
+
+.swc
