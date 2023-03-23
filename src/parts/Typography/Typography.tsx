@@ -4,9 +4,9 @@ import { cssMarginValue, Margin } from '../../styles/cssMarginValue'
 import { Theme } from '../../styles/theme'
 
 export const fontWeight = {
-  regular: 400,
-  medium: 500,
   bold: 600,
+  medium: 500,
+  regular: 400,
 } as const
 
 type FontVariantKeys = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2' | 'caption1' | 'overline1'
@@ -149,12 +149,12 @@ type ElementProps = {
 const Root = styled.div<ElementProps>(
   ({ $color = 'primary', $letterSpacing, $lineHeight, $margin, $noWrap, $variant, theme }) => {
     return {
-      margin: cssMarginValue($margin),
+      color: theme.text[$color],
       fontSize: `${fontVariant[$variant].fontSize}px`,
       fontWeight: fontVariant[$variant].fontWeight,
-      lineHeight: $lineHeight ?? fontVariant[$variant].lineHeight,
-      color: theme.text[$color],
       letterSpacing: $letterSpacing ?? fontVariant[$variant].letterSpacing,
+      lineHeight: $lineHeight ?? fontVariant[$variant].lineHeight,
+      margin: cssMarginValue($margin),
       whiteSpace: $noWrap ? 'nowrap' : 'unset',
     }
   }

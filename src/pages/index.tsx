@@ -3,15 +3,15 @@ import NextLink from 'next/link'
 import useWindowSize from 'react-use/lib/useWindowSize'
 import styled from 'styled-components'
 import { Button } from '../parts/Button'
-import { FlexBox } from '../parts/FlexBox'
-import { GridBox } from '../parts/GridBox'
+import { FlexLayout } from '../parts/FlexLayout'
+import { GridLayout } from '../parts/GridLayout'
 import { Typography } from '../parts/Typography'
 import { CustomNextPage } from '../types/CustomNextTypes'
 
 const Home: CustomNextPage = () => {
   const { width } = useWindowSize()
   return (
-    <FlexBox>
+    <FlexLayout>
       <FullWidthImage aspectRatio={56.1718}>
         <div>
           <NextImage
@@ -21,7 +21,7 @@ const Home: CustomNextPage = () => {
           />
         </div>
         <Heading>
-          <GridBox
+          <GridLayout
             alignItems="center"
             justifyContent="center"
             margin={[16, 'auto']}
@@ -42,8 +42,8 @@ const Home: CustomNextPage = () => {
             <NextLink href="/">
               <Button>F.A.Q</Button>
             </NextLink>
-          </GridBox>
-          <FlexBox
+          </GridLayout>
+          <FlexLayout
             alignItems="center"
             direction="row"
             justifyContent="center"
@@ -56,10 +56,10 @@ const Home: CustomNextPage = () => {
             >
               YAMANOUE CAMP
             </Typography>
-          </FlexBox>
+          </FlexLayout>
         </Heading>
       </FullWidthImage>
-      <FlexBox padding={16}>
+      <FlexLayout padding={16}>
         <Typography
           elementType="h2"
           margin={[24, 0]}
@@ -67,12 +67,12 @@ const Home: CustomNextPage = () => {
         >
           CONTENTS
         </Typography>
-        <GridBox
+        <GridLayout
           minMax="220px,1fr"
           repeatType="fit"
           spacing={16}
         >
-          <FlexBox alignItems="center">
+          <FlexLayout alignItems="center">
             <FullWidthImage aspectRatio={66.6015}>
               <NextImage
                 fill
@@ -81,8 +81,8 @@ const Home: CustomNextPage = () => {
               />
             </FullWidthImage>
             <Typography variant="body1">Mountain bike</Typography>
-          </FlexBox>
-          <FlexBox alignItems="center">
+          </FlexLayout>
+          <FlexLayout alignItems="center">
             <FullWidthImage aspectRatio={66.6015}>
               <NextImage
                 fill
@@ -91,8 +91,8 @@ const Home: CustomNextPage = () => {
               />
             </FullWidthImage>
             <Typography variant="body1">Mountain bike</Typography>
-          </FlexBox>
-          <FlexBox alignItems="center">
+          </FlexLayout>
+          <FlexLayout alignItems="center">
             <FullWidthImage aspectRatio={66.6015}>
               <NextImage
                 fill
@@ -101,14 +101,14 @@ const Home: CustomNextPage = () => {
               />
             </FullWidthImage>
             <Typography variant="body1">Mountain bike</Typography>
-          </FlexBox>
-        </GridBox>
-        <FlexBox
+          </FlexLayout>
+        </GridLayout>
+        <FlexLayout
           alignItems="center"
           justifyContent="center"
           margin={[24, 0]}
         >
-          <FlexBox
+          <FlexLayout
             alignItems="center"
             direction="row"
             justifyContent="center"
@@ -120,16 +120,16 @@ const Home: CustomNextPage = () => {
             <NextLink href="/">
               <Typography variant="body1">CONTACT US</Typography>
             </NextLink>
-          </FlexBox>
+          </FlexLayout>
           <Typography
             margin={16}
             variant="overline1"
           >
             ©2023 by YAMANOUE CAMP.
           </Typography>
-        </FlexBox>
-      </FlexBox>
-    </FlexBox>
+        </FlexLayout>
+      </FlexLayout>
+    </FlexLayout>
   )
 }
 

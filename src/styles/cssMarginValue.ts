@@ -4,9 +4,9 @@ type Value = Grid | 'auto'
 
 export type Margin = [Value, Value?, Value?, Value?] | Grid | undefined
 
-export const cssMarginValue = (argument: Margin): string => {
+export const cssMarginValue = (argument: Margin): string | undefined => {
   if (argument === undefined) {
-    return '0px'
+    return undefined
   }
 
   if (typeof argument === 'number') {

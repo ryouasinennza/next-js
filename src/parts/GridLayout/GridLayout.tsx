@@ -6,57 +6,47 @@ import { cssPaddingValue, Padding } from '../../styles/cssPaddingValue'
 
 type Grid = 0 | 4 | 8 | 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52
 
-type FlexBoxProps = {
+type GridLayoutProps = {
   alignItems?: Property.AlignItems
   children: ReactNode
   className?: string
-  direction?: Property.FlexDirection
-  elementType?: keyof JSX.IntrinsicElements
-  height?: string
   justifyContent?: Property.JustifyContent
   margin?: Margin
   maxWidth?: Property.MaxWidth
-  minHeight?: Property.MinHeight
+  minMax?: string
   padding?: Padding
+  repeatType?: 'fill' | 'fit' | number
   spacing?: Grid
   style?: CSSProperties
   width?: string
-  wrap?: Property.FlexWrap
 }
 
-export const FlexBox: FC<FlexBoxProps> = ({
+export const GridLayout: FC<GridLayoutProps> = ({
   alignItems,
   children,
   className,
-  direction,
-  elementType,
-  height,
   justifyContent,
   margin,
   maxWidth,
-  minHeight,
+  minMax,
   padding,
+  repeatType,
   spacing,
-  style,
   width,
-  wrap,
 }) => {
   return (
     <Root
       $alignItems={alignItems}
-      $direction={direction}
-      $height={height}
+      $itemLength={Array.isArray(children) ? children.length : 1}
       $justifyContent={justifyContent}
       $margin={margin}
       $maxWidth={maxWidth}
-      $minHeight={minHeight}
+      $minMax={minMax}
       $padding={padding}
+      $repeatType={repeatType}
       $spacing={spacing}
       $width={width}
-      $wrap={wrap}
-      as={elementType}
       className={className}
-      style={style}
     >
       {children}
     </Root>
@@ -65,43 +55,41 @@ export const FlexBox: FC<FlexBoxProps> = ({
 
 type RootProps = {
   $alignItems?: Property.AlignItems
-  $direction?: Property.FlexDirection
-  $height?: string
+  $itemLength: number
   $justifyContent?: Property.JustifyContent
   $margin?: Margin
   $maxWidth?: Property.MaxWidth
-  $minHeight?: Property.MinHeight
+  $minMax?: string
   $padding?: Padding
+  $repeatType?: 'fill' | 'fit' | number
   $spacing?: Grid
   $width?: string
-  $wrap?: Property.FlexWrap
 }
 
 const Root = styled.div<RootProps>(
   ({
-    $alignItems = 'flex-start',
-    $direction = 'column',
-    $height,
-    $justifyContent = 'flex-start',
+    $alignItems,
+    $itemLength,
+    $justifyContent,
     $margin,
-    $maxWidth = 'unset',
-    $minHeight = 'unset',
+    $maxWidth,
+    $minMax,
     $padding,
-    $spacing = 0,
-    $width = '100%',
-    $wrap = 'nowrap',
+    $repeatType,
+    $spacing,
+    $width,
   }) => {
+    const repeat = $repeatType ? `auto-${$repeatType}` : $itemLength
+    const minMax = $minMax ? `minmax(${$minMax})` : `100%`
+
     return {
-      position: 'relative',
       alignItems: $alignItems,
-      display: 'flex',
-      flexFlow: `${$direction} ${$wrap}`,
-      gap: `${$spacing}px`,
-      height: `${$height}`,
+      display: 'grid',
+      gap: $spacing ? `${$spacing}px` : undefined,
+      gridTemplateColumns: `repeat(${repeat}, ${minMax})`,
       justifyContent: $justifyContent,
       margin: cssMarginValue($margin),
       maxWidth: $maxWidth,
-      minHeight: $minHeight,
       padding: cssPaddingValue($padding),
       width: $width,
     }

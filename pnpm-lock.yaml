@@ -36,6 +36,7 @@ specifiers:
   eslint-config-next: 13.2.4
   eslint-config-prettier: 8.7.0
   eslint-plugin-sort-destructure-keys: 1.5.0
+  eslint-plugin-sort-keys-fix: 1.1.2
   eslint-plugin-storybook: 0.6.11
   eslint-plugin-testing-library: 5.10.2
   eslint-plugin-typescript-sort-keys: 2.1.0
@@ -118,6 +119,7 @@ devDependencies:
   eslint-config-next: 13.2.4_vgl77cfdswitgr47lm5swmv43m
   eslint-config-prettier: 8.7.0_eslint@8.36.0
   eslint-plugin-sort-destructure-keys: 1.5.0_eslint@8.36.0
+  eslint-plugin-sort-keys-fix: 1.1.2
   eslint-plugin-storybook: 0.6.11_vgl77cfdswitgr47lm5swmv43m
   eslint-plugin-testing-library: 5.10.2_vgl77cfdswitgr47lm5swmv43m
   eslint-plugin-typescript-sort-keys: 2.1.0_342y7v4tc7ytrrysmit6jo4wri
@@ -7877,6 +7879,16 @@ packages:
       natural-compare-lite: 1.4.0
     dev: true
 
+  /eslint-plugin-sort-keys-fix/1.1.2:
+    resolution: {integrity: sha512-DNPHFGCA0/hZIsfODbeLZqaGY/+q3vgtshF85r+YWDNCQ2apd9PNs/zL6ttKm0nD1IFwvxyg3YOTI7FHl4unrw==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      espree: 6.2.1
+      esutils: 2.0.3
+      natural-compare: 1.4.0
+      requireindex: 1.2.0
+    dev: true
+
   /eslint-plugin-storybook/0.6.11_vgl77cfdswitgr47lm5swmv43m:
     resolution: {integrity: sha512-lIVmCqQgA0bhcuS1yWYBFrnPHBKPEQI+LHPDtlN81UE1/17onCqgwUW7Nyt7gS2OHjCAiOR4npjTGEoe0hssKw==}
     engines: {node: 12.x || 14.x || >= 16}
@@ -8003,6 +8015,11 @@ packages:
       eslint-visitor-keys: 2.1.0
     dev: true
 
+  /eslint-visitor-keys/1.3.0:
+    resolution: {integrity: sha512-6J72N8UNa462wa/KFODt/PJ3IU60SDpC3QXC1Hjc1BXXpfL2C9R5+AU7jhe0F6GREqVMh4Juu+NY7xn+6dipUQ==}
+    engines: {node: '>=4'}
+    dev: true
+
   /eslint-visitor-keys/2.1.0:
     resolution: {integrity: sha512-0rSmRBzXgDzIsD6mGdJgevzgezI534Cer5L/vyMX0kHzT/jiB43jRhd9YUlMGYLQy2zprNmoT8qasCGtY+QaKw==}
     engines: {node: '>=10'}
@@ -8060,6 +8077,15 @@ packages:
       text-table: 0.2.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /espree/6.2.1:
+    resolution: {integrity: sha512-ysCxRQY3WaXJz9tdbWOwuWr5Y/XrPTGX9Kiz3yoUXwW0VZ4w30HTkQLaGx/+ttFjF8i+ACbArnB4ce68a9m5hw==}
+    engines: {node: '>=6.0.0'}
+    dependencies:
+      acorn: 7.4.1
+      acorn-jsx: 5.3.2_acorn@7.4.1
+      eslint-visitor-keys: 1.3.0
     dev: true
 
   /espree/9.5.0:

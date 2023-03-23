@@ -15,6 +15,7 @@ module.exports = {
     'typescript-sort-keys',
     'testing-library',
     'unicorn',
+    'sort-keys-fix',
   ],
   settings: {
     'import/resolver': {
@@ -25,7 +26,8 @@ module.exports = {
   },
   rules: {
     'no-console': 'error',
-    "sort-destructure-keys/sort-destructure-keys": 'error',
+    'sort-keys-fix/sort-keys-fix': 'error',
+    'sort-destructure-keys/sort-destructure-keys': 'error',
     'typescript-sort-keys/interface': 'error',
     'typescript-sort-keys/string-enum': 'error',
     'import/order': [

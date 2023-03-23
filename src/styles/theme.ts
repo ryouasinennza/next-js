@@ -3,11 +3,11 @@ import { useEffectOnce } from '../utils/useEffectOnce'
 
 export const primitiveColors = {
   black: '#333',
-  white: '#fff',
+  blue: '#3B72D8',
   gray: '#919191',
   green: '#11A6A1',
-  blue: '#3B72D8',
   red: '#D70015',
+  white: '#fff',
 } as const
 
 const THEME_TYPES = {

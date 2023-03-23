@@ -28,14 +28,14 @@ type RootProps = {
 
 const Root = styled.button<RootProps>(({ $maxWidth = 'unset', theme }) => {
   return {
-    display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    maxWidth: $maxWidth,
-    width: '100%',
-    padding: '8px 16px',
-    whiteSpace: 'nowrap',
     backgroundColor: theme.background.secondary,
     borderRadius: '1000px',
+    display: 'flex',
+    justifyContent: 'center',
+    maxWidth: $maxWidth,
+    padding: '8px 16px',
+    whiteSpace: 'nowrap',
+    width: '100%',
   }
 })
