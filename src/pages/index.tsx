@@ -11,7 +11,7 @@ import { CustomNextPage } from '../types/CustomNextTypes'
 const Home: CustomNextPage = () => {
   const { width } = useWindowSize()
   return (
-    <FlexLayout>
+    <FlexLayout direction="column">
       <FullWidthImage aspectRatio={56.1718}>
         <div>
           <NextImage
@@ -59,7 +59,10 @@ const Home: CustomNextPage = () => {
           </FlexLayout>
         </Heading>
       </FullWidthImage>
-      <FlexLayout padding={16}>
+      <FlexLayout
+        direction="column"
+        padding={16}
+      >
         <Typography
           elementType="h2"
           margin={[24, 0]}
@@ -72,7 +75,10 @@ const Home: CustomNextPage = () => {
           repeatType="fit"
           spacing={16}
         >
-          <FlexLayout alignItems="center">
+          <FlexLayout
+            alignItems="center"
+            direction="column"
+          >
             <FullWidthImage aspectRatio={66.6015}>
               <NextImage
                 fill
@@ -82,7 +88,10 @@ const Home: CustomNextPage = () => {
             </FullWidthImage>
             <Typography variant="body1">Mountain bike</Typography>
           </FlexLayout>
-          <FlexLayout alignItems="center">
+          <FlexLayout
+            alignItems="center"
+            direction="column"
+          >
             <FullWidthImage aspectRatio={66.6015}>
               <NextImage
                 fill
@@ -92,7 +101,10 @@ const Home: CustomNextPage = () => {
             </FullWidthImage>
             <Typography variant="body1">Mountain bike</Typography>
           </FlexLayout>
-          <FlexLayout alignItems="center">
+          <FlexLayout
+            alignItems="center"
+            direction="column"
+          >
             <FullWidthImage aspectRatio={66.6015}>
               <NextImage
                 fill
@@ -105,6 +117,7 @@ const Home: CustomNextPage = () => {
         </GridLayout>
         <FlexLayout
           alignItems="center"
+          direction="column"
           justifyContent="center"
           margin={[24, 0]}
         >

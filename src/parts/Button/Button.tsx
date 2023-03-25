@@ -26,7 +26,7 @@ type RootProps = {
   $maxWidth?: Property.MaxWidth
 }
 
-const Root = styled.button<RootProps>(({ $maxWidth = 'unset', theme }) => {
+const Root = styled.button<RootProps>(({ $maxWidth, theme }) => {
   return {
     alignItems: 'center',
     backgroundColor: theme.background.secondary,

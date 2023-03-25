@@ -10,12 +10,13 @@ type GridLayoutProps = {
   alignItems?: Property.AlignItems
   children: ReactNode
   className?: string
+  columnsLength?: number
   justifyContent?: Property.JustifyContent
   margin?: Margin
   maxWidth?: Property.MaxWidth
   minMax?: string
   padding?: Padding
-  repeatType?: 'fill' | 'fit' | number
+  repeatType?: 'fill' | 'fit'
   spacing?: Grid
   style?: CSSProperties
   width?: string
@@ -25,6 +26,7 @@ export const GridLayout: FC<GridLayoutProps> = ({
   alignItems,
   children,
   className,
+  columnsLength,
   justifyContent,
   margin,
   maxWidth,
@@ -34,10 +36,13 @@ export const GridLayout: FC<GridLayoutProps> = ({
   spacing,
   width,
 }) => {
+  const childrenLength = Array.isArray(children) ? children.length : 1
+  const length = columnsLength ?? childrenLength
+
   return (
     <Root
       $alignItems={alignItems}
-      $itemLength={Array.isArray(children) ? children.length : 1}
+      $columnsLength={length}
       $justifyContent={justifyContent}
       $margin={margin}
       $maxWidth={maxWidth}
@@ -55,7 +60,7 @@ export const GridLayout: FC<GridLayoutProps> = ({
 
 type RootProps = {
   $alignItems?: Property.AlignItems
-  $itemLength: number
+  $columnsLength: number
   $justifyContent?: Property.JustifyContent
   $margin?: Margin
   $maxWidth?: Property.MaxWidth
@@ -69,7 +74,7 @@ type RootProps = {
 const Root = styled.div<RootProps>(
   ({
     $alignItems,
-    $itemLength,
+    $columnsLength,
     $justifyContent,
     $margin,
     $maxWidth,
@@ -79,7 +84,7 @@ const Root = styled.div<RootProps>(
     $spacing,
     $width,
   }) => {
-    const repeat = $repeatType ? `auto-${$repeatType}` : $itemLength
+    const repeat = $repeatType ? `auto-${$repeatType}` : $columnsLength
     const minMax = $minMax ? `minmax(${$minMax})` : `100%`
 
     return {
