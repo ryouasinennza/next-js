@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createContext, FC, ReactNode, useContext } from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 import { useEffectOnce } from '../utils/useEffectOnce'
@@ -152,13 +152,21 @@ const ThemeContext = createContext<ThemeContextProps>({
 
 type ThemeProviderProps = {
   children: ReactNode
+  themeType?: ThemeType
 }
 
-export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
-  const [themeType, themeToggle] = useTheme()
+export const ThemeProvider: FC<ThemeProviderProps> = ({ children, themeType }) => {
+  const [themeTypeState, themeToggle] = useTheme()
+  useEffect(() => {
+    if (themeTypeState === themeType) {
+      themeToggle()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [themeType])
+
   return (
-    <ThemeContext.Provider value={{ themeToggle, themeType }}>
-      <StyledThemeProvider theme={getTheme(themeType)}>
+    <ThemeContext.Provider value={{ themeToggle, themeType: themeTypeState }}>
+      <StyledThemeProvider theme={getTheme(themeTypeState)}>
         <>
           <GlobalStyle />
           {children}

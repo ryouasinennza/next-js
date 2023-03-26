@@ -1,5 +1,22 @@
 # next.js starter kit
 
+## このリポジトリの特徴
+
+### 強力な lint＆formatter
+
+- 通常のフォーマットに加えて オブジェクトのソート、インポートのソート、スタイルのソートをします
+- unicornによる厳格なルール https://github.com/sindresorhus/eslint-plugin-unicorn
+
+### styled-components
+- styled-componentsのセットアップ
+- テーマの切り替え機能
+
+### pnpm
+- pnpmで高速なインストール
+
+### storybook
+- storybookのセットアップ
+
 ## node manager install
 
 ```bash

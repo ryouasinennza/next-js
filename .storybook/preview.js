@@ -1,6 +1,4 @@
-import { ThemeProvider } from 'styled-components'
-import {  GlobalStyle } from '../src/styles/GlobalStyle'
-import { getTheme } from '../src/styles/theme'
+import { ThemeProvider } from '../src/styles/theme'
 
 export const globalTypes = {
   theme: {
@@ -10,7 +8,7 @@ export const globalTypes = {
     toolbar: {
       icon: 'circlehollow',
       items: ['light', 'dark'],
-      title: true,
+      title: 'Theme',
     },
   },
 }
@@ -46,11 +44,10 @@ export const parameters = {
 
 export const decorators = [
   (Story, context) => {
-    const theme = context.parameters.theme || context.globals.theme
+    console.log(context.globals.theme)
     return (
       <>
-        <ThemeProvider theme={getTheme(theme)}>
-          <GlobalStyle />
+        <ThemeProvider themeType={context.globals.theme || 'light'}>
           <Story />
         </ThemeProvider>
       </>
