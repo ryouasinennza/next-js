@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     max-width: 100vw;
     min-height: 100vh;
+    background-color: ${({ theme }) => theme.background.primary};
   }
   
   a {

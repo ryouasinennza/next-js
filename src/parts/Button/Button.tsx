@@ -6,11 +6,15 @@ import { Typography } from '../Typography'
 type ButtonProps = {
   children: ReactNode
   maxWidth?: Property.MaxWidth
+  onClick?: () => void
 }
 
-export const Button: FC<ButtonProps> = ({ children, maxWidth }) => {
+export const Button: FC<ButtonProps> = ({ children, maxWidth, onClick }) => {
   return (
-    <Root $maxWidth={maxWidth}>
+    <Root
+      $maxWidth={maxWidth}
+      onClick={onClick}
+    >
       <Typography
         elementType="span"
         lineHeight={1}

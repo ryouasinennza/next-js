@@ -1,6 +1,8 @@
 import { useEffect, useRef, EffectCallback } from 'react'
 
-export const useEffectOnce = (callback: EffectCallback): void => {
+type UseEffectOnce = (callback: EffectCallback) => void
+
+export const useEffectOnce: UseEffectOnce = (callback) => {
   const rer = useRef(true)
 
   useEffect(() => {

@@ -1,5 +1,8 @@
 import { useState } from 'react'
+import { createContext, FC, ReactNode, useContext } from 'react'
+import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 import { useEffectOnce } from '../utils/useEffectOnce'
+import { GlobalStyle } from './GlobalStyle'
 
 export const primitiveColors = {
   black: '#333',
@@ -54,7 +57,7 @@ export const themeColors: ThemeColors = {
       alert: primitiveColors.red,
       disable: primitiveColors.gray,
       hover: primitiveColors.white,
-      primary: primitiveColors.black,
+      primary: primitiveColors.white,
       secondary: primitiveColors.white,
     },
     border: {
@@ -103,14 +106,14 @@ export const themeColors: ThemeColors = {
 
 type GetTheme = (themeType: ThemeType) => Theme
 
-export const getTheme: GetTheme = (themeType = THEME_TYPES.LIGHT) =>
+const getTheme: GetTheme = (themeType = THEME_TYPES.LIGHT) =>
   themeType === THEME_TYPES.LIGHT ? themeColors.light : themeColors.dark
 
 const LOCAL_STORAGE_KEY = 'next_js_theme'
 
 type UseTheme = () => [ThemeType, () => void]
 
-export const useTheme: UseTheme = () => {
+const useTheme: UseTheme = () => {
   const [theme, setTheme] = useState<ThemeType>(THEME_TYPES.LIGHT)
 
   const setMode = (mode: ThemeType): void => {
@@ -135,3 +138,34 @@ export const useTheme: UseTheme = () => {
   })
   return [theme, themeToggle]
 }
+
+type ThemeContextProps = {
+  themeToggle: () => void
+  themeType: ThemeType
+}
+
+const ThemeContext = createContext<ThemeContextProps>({
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  themeToggle: () => {},
+  themeType: 'light',
+})
+
+type ThemeProviderProps = {
+  children: ReactNode
+}
+
+export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
+  const [themeType, themeToggle] = useTheme()
+  return (
+    <ThemeContext.Provider value={{ themeToggle, themeType }}>
+      <StyledThemeProvider theme={getTheme(themeType)}>
+        <>
+          <GlobalStyle />
+          {children}
+        </>
+      </StyledThemeProvider>
+    </ThemeContext.Provider>
+  )
+}
+
+export const useThemeContext = (): ThemeContextProps => useContext(ThemeContext)

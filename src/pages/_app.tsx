@@ -1,17 +1,10 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { FC } from 'react'
-import { ThemeProvider } from 'styled-components'
-import { SWRConfig } from 'swr'
-import { GlobalStyle } from '../styles/GlobalStyle'
-import { getTheme, useTheme } from '../styles/theme'
-
-const fetcher = (url: string): Promise<unknown> => fetch(url).then((res) => res.json())
+import { ThemeProvider } from '../styles/theme'
+import { SWRConfig } from '../utils/SWRConfig'
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  const [themeType, themeToggle] = useTheme()
-  const customPageProps = { ...pageProps, themeToggle }
-
   return (
     <>
       <Head>
@@ -29,14 +22,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           rel="icon"
         />
       </Head>
-      <SWRConfig
-        value={{
-          fetcher,
-        }}
-      >
-        <ThemeProvider theme={getTheme(themeType)}>
-          <GlobalStyle />
-          <Component {...customPageProps} />
+      <SWRConfig>
+        <ThemeProvider>
+          <Component {...pageProps} />
         </ThemeProvider>
       </SWRConfig>
     </>

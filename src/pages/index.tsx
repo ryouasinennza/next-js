@@ -1,3 +1,4 @@
+import { NextPage } from 'next'
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 import useWindowSize from 'react-use/lib/useWindowSize'
@@ -6,10 +7,11 @@ import { Button } from '../parts/Button'
 import { FlexLayout } from '../parts/FlexLayout'
 import { GridLayout } from '../parts/GridLayout'
 import { Typography } from '../parts/Typography'
-import { CustomNextPage } from '../types/CustomNextTypes'
+import { useThemeContext } from '../styles/theme'
 
-const Home: CustomNextPage = () => {
+const Home: NextPage = () => {
   const { width } = useWindowSize()
+  const { themeToggle } = useThemeContext()
   return (
     <FlexLayout direction="column">
       <FullWidthImage aspectRatio={56.1718}>
@@ -42,6 +44,7 @@ const Home: CustomNextPage = () => {
             <NextLink href="/">
               <Button>F.A.Q</Button>
             </NextLink>
+            <Button onClick={() => themeToggle()}>テーマ変更</Button>
           </GridLayout>
           <FlexLayout
             alignItems="center"
