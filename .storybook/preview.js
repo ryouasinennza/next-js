@@ -44,13 +44,10 @@ export const parameters = {
 
 export const decorators = [
   (Story, context) => {
-    console.log(context.globals.theme)
     return (
-      <>
-        <ThemeProvider themeType={context.globals.theme || 'light'}>
-          <Story />
-        </ThemeProvider>
-      </>
+      <ThemeProvider themeType={context.globals.theme || 'light'}>
+        <Story />
+      </ThemeProvider>
     )
   },
 ]

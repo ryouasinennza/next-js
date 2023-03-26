@@ -165,14 +165,16 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children, themeType }) =
   }, [themeType])
 
   return (
-    <ThemeContext.Provider value={{ themeToggle, themeType: themeTypeState }}>
-      <StyledThemeProvider theme={getTheme(themeTypeState)}>
-        <>
-          <GlobalStyle />
-          {children}
-        </>
-      </StyledThemeProvider>
-    </ThemeContext.Provider>
+    <>
+      <ThemeContext.Provider value={{ themeToggle, themeType: themeTypeState }}>
+        <StyledThemeProvider theme={getTheme(themeTypeState)}>
+          <>
+            <GlobalStyle />
+            {children}
+          </>
+        </StyledThemeProvider>
+      </ThemeContext.Provider>
+    </>
   )
 }
 
