@@ -32,12 +32,12 @@
     "typescript": "5.0.2"
   },
   "volta": {
-    "pnpm": "8.1.0",
+    "pnpm": "8.1.1",
     "node": "18.15.0"
   },
   "engines": {
     "node": "^18.15.0",
-    "pnpm": "^8.1.0"
+    "pnpm": "^8.1.1"
   },
   "prettier": {
     "printWidth": 120,
