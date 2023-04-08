@@ -3,11 +3,13 @@ import { CSSProperties, FC, ReactNode } from 'react'
 import styled from 'styled-components'
 import { cssMarginValue, Margin } from '../../styles/cssMarginValue'
 import { cssPaddingValue, Padding } from '../../styles/cssPaddingValue'
+import { Theme } from '../../styles/theme'
 
 type Grid = 0 | 4 | 8 | 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52
 
 type FlexLayoutProps = {
   alignItems?: Property.AlignItems
+  backgroundColor?: keyof Theme['background']
   children: ReactNode
   className?: string
   direction?: Property.FlexDirection
@@ -27,6 +29,7 @@ type FlexLayoutProps = {
 
 export const FlexLayout: FC<FlexLayoutProps> = ({
   alignItems,
+  backgroundColor,
   children,
   className,
   direction,
@@ -46,6 +49,7 @@ export const FlexLayout: FC<FlexLayoutProps> = ({
   return (
     <Root
       $alignItems={alignItems}
+      $backgroundColor={backgroundColor}
       $direction={direction}
       $flex={flex}
       $height={height}
@@ -68,6 +72,7 @@ export const FlexLayout: FC<FlexLayoutProps> = ({
 
 type RootProps = {
   $alignItems?: Property.AlignItems
+  $backgroundColor?: keyof Theme['background']
   $direction?: Property.FlexDirection
   $flex?: Property.Flex
   $height?: Property.Width
@@ -84,6 +89,7 @@ type RootProps = {
 const Root = styled.div<RootProps>(
   ({
     $alignItems,
+    $backgroundColor,
     $direction,
     $flex,
     $height,
@@ -95,11 +101,13 @@ const Root = styled.div<RootProps>(
     $spacing,
     $width,
     $wrap,
+    theme,
   }) => {
     const width = $width === true ? '100%' : $width
 
     return {
       alignItems: $alignItems,
+      backgroundColor: $backgroundColor && theme.background[$backgroundColor],
       display: 'flex',
       flex: $flex,
       flexDirection: $direction,

@@ -23,6 +23,7 @@ type ThemeType = (typeof THEME_TYPES)[keyof typeof THEME_TYPES]
 export type Theme = {
   background: {
     alert: string
+    appBar: string
     disable: string
     hover: string
     primary: string
@@ -55,6 +56,7 @@ export const themeColors: ThemeColors = {
   dark: {
     background: {
       alert: primitiveColors.red,
+      appBar: primitiveColors.black,
       disable: primitiveColors.gray,
       hover: primitiveColors.white,
       primary: primitiveColors.white,
@@ -80,6 +82,7 @@ export const themeColors: ThemeColors = {
   light: {
     background: {
       alert: primitiveColors.red,
+      appBar: primitiveColors.black,
       disable: primitiveColors.gray,
       hover: primitiveColors.white,
       primary: primitiveColors.black,

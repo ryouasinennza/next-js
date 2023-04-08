@@ -46,3 +46,5 @@ public/robots.txt
 storybook-static
 
 .swc
+
+/lib/cli/dist/
