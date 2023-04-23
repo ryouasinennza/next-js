@@ -5,10 +5,10 @@ import { customRender } from '../../utils/customRender'
 import * as stories from './Counter.stories'
 
 describe('Counter', () => {
-  const { Default } = composeStories(stories)
+  const { DefaultStory } = composeStories(stories)
 
   test('全てがレンダリングされていること', () => {
-    customRender(<Default />)
+    customRender(<DefaultStory />)
     expect(screen.getByRole('button', { name: '加算減算' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: '加算減算切替' })).toBeInTheDocument()
     expect(screen.getByText('up!')).toBeInTheDocument()
@@ -16,7 +16,7 @@ describe('Counter', () => {
   })
 
   test('加算されること', () => {
-    customRender(<Default />)
+    customRender(<DefaultStory />)
     const changeCountButton = screen.getByRole('button', { name: '加算減算' })
     act(() => {
       changeCountButton.dispatchEvent(new MouseEvent('click', { bubbles: true }))
@@ -25,7 +25,7 @@ describe('Counter', () => {
   })
 
   test('減算されること', () => {
-    customRender(<Default />)
+    customRender(<DefaultStory />)
     const changeCountButton = screen.getByRole('button', { name: '加算減算' })
     const changeUpDownButton = screen.getByRole('button', { name: '加算減算切替' })
     act(() => {

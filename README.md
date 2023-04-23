@@ -5,17 +5,20 @@
 ### 強力な lint＆formatter
 
 - 通常のフォーマットに加えて オブジェクトのソート、インポートのソート、スタイルのソートをします
-- unicornによる厳格なルール https://github.com/sindresorhus/eslint-plugin-unicorn
+- unicorn による厳格なルール https://github.com/sindresorhus/eslint-plugin-unicorn
 
 ### styled-components
-- styled-componentsのセットアップ
+
+- styled-components のセットアップ
 - テーマの切り替え機能
 
 ### pnpm
-- pnpmで高速なインストール
+
+- pnpm で高速なインストール
 
 ### storybook
-- storybookのセットアップ
+
+- storybook のセットアップ
 
 ## node manager install
 

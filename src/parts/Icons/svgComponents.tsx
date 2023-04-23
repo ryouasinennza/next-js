@@ -9,6 +9,8 @@ export type SvgComponents = {
   euro: SvgComponent
 }
 
+export type SvgComponentsKeys = keyof SvgComponents
+
 export const svgComponents: SvgComponents = {
   car: Car,
   euro: Euro,

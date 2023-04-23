@@ -1,25 +1,14 @@
 import * as child_process from 'node:child_process'
-import { dirname } from 'node:path'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import appRootPath from 'app-root-path'
 import { outputFileSync } from 'fs-extra'
 import { fsReaddirRecursive } from './utils/fsReaddirRecursive'
 
-const distDir = dirname(fileURLToPath(import.meta.url))
-const cliDir = dirname(distDir)
-const libDir = dirname(cliDir)
-const rootDir = dirname(libDir)
+const rootDir = appRootPath.path
+const publicDir = `${rootDir}/public`
+const srcDir = `${rootDir}/src`
 
-const pathObject = {
-  cliDir,
-  distDir,
-  libDir,
-  publicDir: `${rootDir}/public`,
-  rootDir,
-  srcDir: `${rootDir}/src`,
-}
-
-const relativePath = path.relative(`${pathObject.srcDir}/parts/Icons`, pathObject.publicDir)
+const relativePath = path.relative(`${srcDir}/parts/Icons`, publicDir)
 
 const toUpperCamelCase = (str: string): string => {
   return str.replace(/^\w|[A-Z]|\b\w/g, function (word, index) {
@@ -27,35 +16,34 @@ const toUpperCamelCase = (str: string): string => {
   })
 }
 
-const fileNames = fsReaddirRecursive(`${pathObject.publicDir}/svgs`).map((fileName) => fileName.replace('.svg', ''))
+const fileNames = fsReaddirRecursive(`${publicDir}/svgs`).map((fileName) => fileName.replace('.svg', ''))
 
 let text = "import { FC, SVGProps } from 'react'\n"
 
 for (const fileName of fileNames) {
   text = text + `import ${toUpperCamelCase(fileName)} from '${relativePath}/svgs/${fileName}.svg'\n`
 }
+text = text + '\n'
 
-text = text + '\n'
-text = text + 'type SvgComponent = FC<SVGProps<SVGElement>>\n'
-text = text + '\n'
+text = text + 'type SvgComponent = FC<SVGProps<SVGElement>>\n\n'
 
 text = text + `export type SvgComponents = {\n`
 for (const fileName of fileNames) {
   text = text + `${fileName}: SvgComponent\n`
 }
-text = text + `}\n`
-text = text + `\n`
+text = text + `}\n\n`
+
+text = text + 'export type SvgComponentsKeys = keyof SvgComponents\n\n'
 
 text = text + `export const svgComponents: SvgComponents = {\n`
 for (const fileName of fileNames) {
   text = text + `${fileName}: ${toUpperCamelCase(fileName)},\n`
 }
-text = text + `}\n`
+text = text + `}\n\n`
 
-text = text + `\n`
 text = text + `export const svgComponentsKeys = Object.keys(svgComponents) as (keyof SvgComponents)[]\n`
-text = text + `\n`
 
 outputFileSync(`${rootDir}/src/parts/Icons/svgComponents.tsx`, text)
 
+child_process.execSync(`pnpm eslint --fix ${rootDir}/src/parts/Icons/svgComponents.tsx`)
 child_process.execSync(`pnpm prettier --write ${rootDir}/src/parts/Icons/svgComponents.tsx`)

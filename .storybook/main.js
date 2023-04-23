@@ -1,12 +1,6 @@
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|tsx)'],
-  addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-links',
-    '@storybook/addon-postcss',
-    'storybook-addon-designs',
-  ],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions', '@storybook/addon-links'],
   features: {
     storyStoreV7: true,
   },
@@ -29,8 +23,5 @@ module.exports = {
     const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test('.svg'))
     fileLoaderRule.exclude = /\.svg$/
     return config
-  },
-  docs: {
-    autodocs: true,
   },
 }

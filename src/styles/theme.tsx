@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createContext, FC, ReactNode, useContext } from 'react'
+import useEffectOnce from 'react-use/lib/useEffectOnce'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
-import { useEffectOnce } from '../utils/useEffectOnce'
 import { GlobalStyle } from './GlobalStyle'
 
 export const primitiveColors = {

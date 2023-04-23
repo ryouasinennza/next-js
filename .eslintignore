@@ -1,11 +1,9 @@
-.next
-node_modules
-public
-next.config.js
-prettier.config.js
 .eslintrc.js
+.next
 jest.config.js
 jest.setup.js
-stylelint.config.js
-next-sitemap.js
+next.config.js
+node_modules
 ppj.config.js
+public
+stylelint.config.js
