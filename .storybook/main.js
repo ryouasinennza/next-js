@@ -10,16 +10,15 @@ module.exports = {
   features: {
     storyStoreV7: true,
   },
-  core: {
-    builder: {
-      name: 'webpack5',
-      options: {
+  framework: {
+    name: '@storybook/nextjs',
+    options: {
+      builder: {
         lazyCompilation: true,
         fsCache: true,
       },
     },
   },
-  framework: '@storybook/react',
   staticDirs: ['../public'],
   webpackFinal: async (config) => {
     config.module.rules.push({
@@ -30,5 +29,8 @@ module.exports = {
     const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test('.svg'))
     fileLoaderRule.exclude = /\.svg$/
     return config
+  },
+  docs: {
+    autodocs: true,
   },
 }

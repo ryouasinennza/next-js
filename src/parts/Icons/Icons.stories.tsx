@@ -1,15 +1,17 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { FlexLayout } from '../FlexLayout'
 import { Icons } from './Icons'
 import { svgComponentsKeys } from './svgComponents'
 
-type Story = ComponentStoryObj<typeof Icons>
+type Story = StoryObj<typeof Icons>
 
-export default {
+const meta: Meta<typeof Icons> = {
   args: {},
   component: Icons,
   title: 'parts/Icons',
-} as ComponentMeta<typeof Icons>
+}
+
+export default meta
 
 export const Default: Story = {
   render: () => {

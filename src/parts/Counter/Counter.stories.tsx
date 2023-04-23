@@ -1,15 +1,17 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { Counter } from './Counter'
 
-type Story = ComponentStoryObj<typeof Counter>
+type Story = StoryObj<typeof Counter>
 
-export default {
+const meta: Meta<typeof Counter> = {
   args: {
     countText: '加算減算',
     upDownText: '加算減算切替',
   },
   component: Counter,
   title: 'parts/Counter',
-} as ComponentMeta<typeof Counter>
+}
 
-export const Default: Story = {}
+export default meta
+
+export const DefaultStory: Story = {}
