@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from 'react'
 import { createContext, FC, ReactNode, useContext } from 'react'
 import useEffectOnce from 'react-use/lib/useEffectOnce'
@@ -59,7 +60,7 @@ export const themeColors: ThemeColors = {
       appBar: primitiveColors.black,
       disable: primitiveColors.gray,
       hover: primitiveColors.white,
-      primary: primitiveColors.white,
+      primary: primitiveColors.black,
       secondary: primitiveColors.white,
     },
     border: {
@@ -74,8 +75,8 @@ export const themeColors: ThemeColors = {
       disable: primitiveColors.gray,
       link: primitiveColors.blue,
       placeHolder: primitiveColors.gray,
-      primary: primitiveColors.black,
-      secondary: primitiveColors.white,
+      primary: primitiveColors.white,
+      secondary: primitiveColors.black,
       visited: primitiveColors.red,
     },
   },
@@ -85,8 +86,8 @@ export const themeColors: ThemeColors = {
       appBar: primitiveColors.black,
       disable: primitiveColors.gray,
       hover: primitiveColors.white,
-      primary: primitiveColors.black,
-      secondary: primitiveColors.white,
+      primary: primitiveColors.white,
+      secondary: primitiveColors.black,
     },
     border: {
       alert: primitiveColors.red,

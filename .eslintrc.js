@@ -51,6 +51,7 @@ module.exports = {
     ],
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/filename-case': 'off',
+    'unicorn/no-null': 'off',
     'react/jsx-sort-props': [
       'error',
       {

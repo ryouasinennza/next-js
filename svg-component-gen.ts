@@ -1,8 +1,37 @@
 import * as child_process from 'node:child_process'
+import fs from 'node:fs'
 import path from 'node:path'
 import appRootPath from 'app-root-path'
 import { outputFileSync } from 'fs-extra'
-import { fsReaddirRecursive } from './utils/fsReaddirRecursive'
+
+type Filter = (value: string, index: number, dir: string) => boolean
+
+type FsReaddirRecursive = (root: string, filter?: Filter, files?: string[], prefix?: string) => string[]
+
+export const fsReaddirRecursive: FsReaddirRecursive = (root, filter, files = [], prefix = ''): string[] => {
+  const dir = path.join(root, prefix)
+
+  if (!fs.existsSync(dir)) {
+    return files
+  }
+
+  if (fs.statSync(dir).isDirectory()) {
+    const array = fs.readdirSync(dir).filter((value, index) => {
+      if (!filter) {
+        return true
+      }
+      return filter(value, index, dir)
+    })
+
+    for (const name of array) {
+      fsReaddirRecursive(root, filter, files, path.join(prefix, name))
+    }
+  } else {
+    files.push(prefix)
+  }
+
+  return files
+}
 
 const rootDir = appRootPath.path
 const publicDir = `${rootDir}/public`
@@ -11,8 +40,8 @@ const srcDir = `${rootDir}/src`
 const relativePath = path.relative(`${srcDir}/parts/Icons`, publicDir)
 
 const toUpperCamelCase = (str: string): string => {
-  return str.replace(/^\w|[A-Z]|\b\w/g, function (word, index) {
-    return index == 0 ? word.toUpperCase() : word.toUpperCase().replace(/\s+/g, '')
+  return str.replaceAll(/^\w|[A-Z]|\b\w/g, function (word, index) {
+    return index == 0 ? word.toUpperCase() : word.toUpperCase().replaceAll(/\s+/g, '')
   })
 }
 
