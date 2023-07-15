@@ -122,5 +122,5 @@ const Root = styled.div<RootProps>(
       position: 'relative',
       width,
     }
-  }
+  },
 )

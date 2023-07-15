@@ -98,5 +98,5 @@ const Root = styled.div<RootProps>(
       padding: cssPaddingValue($padding),
       width: $width,
     }
-  }
+  },
 )

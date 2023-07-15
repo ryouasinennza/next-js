@@ -157,5 +157,5 @@ const Root = styled.div<ElementProps>(
       margin: cssMarginValue($margin),
       whiteSpace: $noWrap ? 'nowrap' : 'unset',
     }
-  }
+  },
 )

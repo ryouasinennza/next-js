@@ -1,4 +1,7 @@
-module.exports = {
+import type { StorybookConfig } from '@storybook/nextjs'
+import type { RuleSetRule } from 'webpack'
+
+const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-interactions', '@storybook/addon-links'],
   features: {
@@ -15,13 +18,23 @@ module.exports = {
   },
   staticDirs: ['../public'],
   webpackFinal: async (config) => {
+    config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
+      if (rule.test instanceof RegExp && rule.test && rule.test.test('.svg')) {
+        return {
+          ...rule,
+          exclude: /\.svg$/,
+        }
+      }
+      return rule
+    })
+
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
       use: ['@svgr/webpack'],
     })
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test('.svg'))
-    fileLoaderRule.exclude = /\.svg$/
     return config
   },
 }
+
+export default config
