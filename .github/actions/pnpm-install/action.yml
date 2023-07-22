@@ -40,6 +40,9 @@ runs:
         key: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-
 
+    - name: Cache hit
+      run: echo "cache-hit=${{ steps.cache.outputs.cache-hit }}"
+
     - name: Setup pnpm cache main branch
       if: ${{ steps.cache.outputs.cache-hit != 'true' }}
       uses: actions/cache@v3
