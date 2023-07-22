@@ -39,9 +39,10 @@ runs:
         path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-
-    - if: not cache.hit
-    - run: echo "Cache A is not available, using Cache B"
-    - uses: actions/cache@v3
+
+    - name: Setup pnpm cache main branch
+      uses: actions/cache@v3
+      if: not cache.hit
       with:
         path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-cache-main
