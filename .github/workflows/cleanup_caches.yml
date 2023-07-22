@@ -66,3 +66,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: ./.github/actions/main-branch-pnpm-cache
+
+      - name: Cache list
+        run: |
+          cacheKeysFor=$(gh actions-cache list)
+          set +e
+          echo "Show caches..."
+          for cacheKey in $cacheKeysFor
+          do
+              echo $cacheKey
+          done
+          echo "Done"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
