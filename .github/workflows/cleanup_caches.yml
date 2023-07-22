@@ -48,8 +48,6 @@ jobs:
 
       - name: Cleanup main branch caches
         run: |
-          gh extension install actions/gh-actions-cache
-
           REPO=${{ github.repository }}
           BRANCH="refs/heads/main"
 
