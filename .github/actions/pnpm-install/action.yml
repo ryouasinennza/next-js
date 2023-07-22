@@ -16,6 +16,7 @@ runs:
       with:
         node-version: ${{ env.NODE_VERSION }}
 
+    - name: Install pnpm
     - uses: pnpm/action-setup@v2.2.4
       id: pnpm-install
       with:
@@ -39,8 +40,8 @@ runs:
         key: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-
     - if: not cache.hit
-      run: echo "Cache A is not available, using Cache B"
-      uses: actions/cache@v3
+    - run: echo "Cache A is not available, using Cache B"
+    - uses: actions/cache@v3
       with:
         path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-cache-main
