@@ -42,7 +42,7 @@ runs:
 
     - name: branch name
       shell: bash
-      run: echo "cache.hit ${{ cache.hit }}"
+      run: echo "cache.hit ${{ steps.cache.outputs.cache-hit != 'true' }}"
 
 #    - name: Setup pnpm cache main branch
 #      uses: actions/cache@v3
