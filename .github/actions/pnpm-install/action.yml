@@ -4,6 +4,7 @@ runs:
   using: 'composite'
   steps:
     - name: Get node & pnpm version
+      shell: bash
       run: |
         pnpm_version=$(cat ./package.json | jq -r .engines.pnpm)
         echo "PNPM_VERSION=${pnpm_version}" >> $GITHUB_ENV
