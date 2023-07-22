@@ -14,6 +14,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
+      - name: branch name
+        run: echo "branch name is ${{ github.ref }}"
+
       - name: Cleanup branch caches
         run: |
           gh extension install actions/gh-actions-cache
@@ -40,12 +43,15 @@ jobs:
         with:
           ref: main
 
+      - name: branch name
+        run: echo "branch name is ${{ github.ref }}"
+
       - name: Cleanup main branch caches
         run: |
           gh extension install actions/gh-actions-cache
 
           REPO=${{ github.repository }}
-          BRANCH="main"
+          BRANCH="refs/heads/main"
 
           echo "Fetching list of cache key"
           cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH | cut -f 1 )
