@@ -40,17 +40,13 @@ runs:
         key: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-
 
-    - name: branch name
-      shell: bash
-      run: echo "cache.hit ${{ steps.cache.outputs.cache-hit }}"
-
     - name: Setup pnpm cache main branch
       uses: actions/cache@v3
       if: steps.cache.outputs.cache-hit != 'false'
       with:
         path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-cache-main
-        restore-keys: ${{ runner.os }}-pnpm-store-cache-main
+        key: ${{ runner.os }}-pnpm-store-cache-main-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: ${{ runner.os }}-pnpm-store-cache-main-
 
     - name: Install dependencies
       shell: bash

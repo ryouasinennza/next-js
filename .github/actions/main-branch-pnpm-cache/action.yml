@@ -32,8 +32,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-cache-main
-        restore-keys: ${{ runner.os }}-pnpm-store-cache-main
+        key: ${{ runner.os }}-pnpm-store-cache-main-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: ${{ runner.os }}-pnpm-store-cache-main-
 
     - name: Install dependencies
       shell: bash
