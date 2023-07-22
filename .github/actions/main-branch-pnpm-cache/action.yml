@@ -1,0 +1,40 @@
+name: 'PNPM install'
+description: 'Set main branch cache'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Get node & pnpm version
+      shell: bash
+      run: |
+        pnpm_version=$(cat ./package.json | jq -r .engines.pnpm)
+        echo "PNPM_VERSION=${pnpm_version}" >> $GITHUB_ENV
+        node_version=$(cat ./package.json | jq -r .engines.node)
+        echo "NODE_VERSION=${node_version}" >> $GITHUB_ENV
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - uses: pnpm/action-setup@v2.2.4
+      id: pnpm-install
+      with:
+        version: ${{ env.PNPM_VERSION }}
+        run_install: false
+
+    - name: Expose pnpm config(s) through "$GITHUB_OUTPUT"
+      id: pnpm-config
+      shell: bash
+      run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+    - name: Setup pnpm cache
+      uses: actions/cache@v3
+      with:
+        path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-cache-main
+        restore-keys: ${{ runner.os }}-pnpm-store-cache-main
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile --prefer-offline
