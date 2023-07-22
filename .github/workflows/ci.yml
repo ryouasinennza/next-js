@@ -9,8 +9,11 @@ jobs:
 
       - uses: ./.github/actions/pnpm-install
 
-      - name: jest
+      - name: lint
+        run: pnpm lint
+
+      - name: test
         run: pnpm test
 
-      - name: tsc
+      - name: type
         run: pnpm type

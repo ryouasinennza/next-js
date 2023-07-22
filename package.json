@@ -16,7 +16,7 @@
     "start": "next start",
     "svg-component-gen": "node -r esbuild-register ./svg-component-gen.ts",
     "svg-component-gen-dev": "chokidar './public/svgs' -c 'pnpm svg-component-gen'",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "type": "tsc",
     "update-check": "prettier --write './src/**/*' && jest && tsc && storybook build && next build --no-lint"
   },
