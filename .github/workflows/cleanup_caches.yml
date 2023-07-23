@@ -17,65 +17,33 @@ jobs:
       - name: branch name
         run: echo "branch name is ${{ github.ref }}"
 
-      - name: Cleanup branch caches
+      - name: Cleanup caches
         run: |
           gh extension install actions/gh-actions-cache
 
           REPO=${{ github.repository }}
-          BRANCH="refs/pull/${{ github.event.pull_request.number }}/merge"
+          PR_BRANCH="refs/pull/${{ github.event.pull_request.number }}/merge"
+          MAIN_BRANCH="refs/heads/main"
 
           echo "Fetching list of cache key"
-          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH | cut -f 1 )
+          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $PR_BRANCH | cut -f 1 )
+          cacheKeysForMain=$(gh actions-cache list -R $REPO -B $MAIN_BRANCH | cut -f 1 )
 
-          ## Setting this to not fail the workflow while deleting cache keys. 
           set +e
-          echo "Deleting caches..."
-          for cacheKey in $cacheKeysForPR
+          echo "Deleting pr caches..."
+          for prCacheKey in $cacheKeysForPR
           do
-              gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
+              gh actions-cache delete $prCacheKey -R $REPO -B $PR_BRANCH --confirm
           done
-          echo "Done"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check out main
-        uses: actions/checkout@v3
-        with:
-          ref: main
-
-      - name: branch name
-        run: echo "branch name is ${{ github.ref }}"
-
-      - name: Cleanup main branch caches
-        run: |
-          REPO=${{ github.repository }}
-          BRANCH="refs/heads/main"
-
-          echo "Fetching list of cache key"
-          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH | cut -f 1 )
-
-          ## Setting this to not fail the workflow while deleting cache keys. 
-          set +e
-          echo "Deleting caches..."
-          for cacheKey in $cacheKeysForPR
+          echo "Deleting main caches..."
+          for mainCacheKey in $cacheKeysForMain
           do
-              gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
+              gh actions-cache delete $mainCacheKey -R $REPO -B $MAIN_BRANCH --confirm
           done
+
           echo "Done"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: ./.github/actions/main-branch-pnpm-cache
-
-      - name: Cache list
-        run: |
-          cacheKeysFor=$(gh actions-cache list)
-          set +e
-          echo "Show caches..."
-          for cacheKey in $cacheKeysFor
-          do
-              echo $cacheKey
-          done
-          echo "Done"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
