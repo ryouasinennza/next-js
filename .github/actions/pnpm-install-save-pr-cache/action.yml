@@ -27,7 +27,9 @@ runs:
     - name: Expose pnpm config(s) through "$GITHUB_OUTPUT"
       id: pnpm-config
       shell: bash
-      run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      run: |
+        echo "$(pnpm store path)"
+        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
     - name: Cache rotation keys
       id: cache-rotation
@@ -40,6 +42,7 @@ runs:
       with:
         path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-
 
     - name: Cache hit(pr)
       shell: bash
@@ -51,7 +54,8 @@ runs:
       id: cache-main
       with:
         path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-cache-main-
+        key: ${{ runner.os }}-pnpm-store-cache-main-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: ${{ runner.os }}-pnpm-store-cache-main-
 
     - name: Cache hit(main)
       shell: bash
