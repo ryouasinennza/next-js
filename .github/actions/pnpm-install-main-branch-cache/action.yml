@@ -1,4 +1,4 @@
-name: 'PNPM install'
+name: 'pnpm-install-main-branch-cache'
 description: 'Set main branch cache'
 
 runs:
@@ -28,13 +28,12 @@ runs:
       shell: bash
       run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-    - name: Setup pnpm cache
-      uses: actions/cache@v3
-      with:
-        path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-cache-main-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: ${{ runner.os }}-pnpm-store-cache-main-
-
     - name: Install dependencies
       shell: bash
       run: pnpm install --frozen-lockfile --prefer-offline
+
+    - name: Setup pnpm cache
+      uses: actions/cache/save@v3
+      with:
+        path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-cache-main-${{ hashFiles('**/pnpm-lock.yaml') }}

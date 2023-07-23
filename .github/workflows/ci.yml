@@ -7,7 +7,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - uses: ./.github/actions/pnpm-install
+      - uses: ./.github/actions/pnpm-install-save-pr-cache
 
       - name: lint
         run: pnpm lint
