@@ -26,7 +26,9 @@ runs:
     - name: Expose pnpm config(s) through "$GITHUB_OUTPUT"
       id: pnpm-config
       shell: bash
-      run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      run: |
+        echo "$(pnpm store path)"
+        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
     - name: Install dependencies
       shell: bash
@@ -36,4 +38,4 @@ runs:
       uses: actions/cache/save@v3
       with:
         path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-cache-main-${{ hashFiles('**/pnpm-lock.yaml') }}
+        key: ${{ runner.os }}-pnpm-store-cache-main
