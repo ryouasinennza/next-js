@@ -1,5 +1,5 @@
-name: 'PNPM install'
-description: 'Set main branch cache'
+name: 'pnpm-install-not-save-cache'
+description: 'Not save cache'
 
 runs:
   using: 'composite'
@@ -17,7 +17,8 @@ runs:
       with:
         node-version: ${{ env.NODE_VERSION }}
 
-    - uses: pnpm/action-setup@v2.2.4
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2.2.4
       id: pnpm-install
       with:
         version: ${{ env.PNPM_VERSION }}
@@ -28,12 +29,33 @@ runs:
       shell: bash
       run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
+    - name: Cache rotation keys
+      id: cache-rotation
+      shell: bash
+      run: echo "YEAR_MONTH=$(/bin/date -u "+%Y%m")" >> $GITHUB_OUTPUT
+
     - name: Setup pnpm cache
-      uses: actions/cache@v3
+      uses: actions/cache/restore@v3
+      id: cache-pr
+      with:
+        path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+    - name: Cache hit(pr)
+      shell: bash
+      run: echo "pr-cache-hit=${{ steps.cache-pr.outputs.cache-hit }}"
+
+    - name: Setup pnpm cache main branch
+      if: ${{ steps.cache-pr.outputs.cache-hit != 'true' }}
+      uses: actions/cache/restore@v3
+      id: cache-main
       with:
         path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-cache-main-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: ${{ runner.os }}-pnpm-store-cache-main-
+
+    - name: Cache hit(main)
+      shell: bash
+      run: echo "main-cache-hit=${{ steps.cache-main.outputs.cache-hit }}"
 
     - name: Install dependencies
       shell: bash

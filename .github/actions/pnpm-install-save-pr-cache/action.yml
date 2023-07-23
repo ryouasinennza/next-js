@@ -1,4 +1,5 @@
 name: 'PNPM install'
+description: 'Set pr branch cache'
 
 runs:
   using: 'composite'
@@ -34,25 +35,36 @@ runs:
       run: echo "YEAR_MONTH=$(/bin/date -u "+%Y%m")" >> $GITHUB_OUTPUT
 
     - name: Setup pnpm cache
-      uses: actions/cache@v3
-      id: cache
+      uses: actions/cache/restore@v3
+      id: cache-pr
       with:
         path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-
 
-    - name: Cache hit
+    - name: Cache hit(pr)
       shell: bash
-      run: echo "cache-hit=${{ steps.cache.outputs.cache-hit }}"
+      run: echo "pr-cache-hit=${{ steps.cache-pr.outputs.cache-hit }}"
 
     - name: Setup pnpm cache main branch
-      if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-      uses: actions/cache@v3
+      if: ${{ steps.cache-pr.outputs.cache-hit != 'true' }}
+      uses: actions/cache/restore@v3
+      id: cache-main
       with:
         path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-cache-main-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: ${{ runner.os }}-pnpm-store-cache-main-
+
+    - name: Cache hit(main)
+      shell: bash
+      run: echo "main-cache-hit=${{ steps.cache-main.outputs.cache-hit }}"
 
     - name: Install dependencies
       shell: bash
       run: pnpm install --frozen-lockfile --prefer-offline
+
+    - name: Cache save
+      if: ${{ steps.cache-pr.outputs.cache-hit != 'true' }}
+      uses: actions/cache/save@v3
+      id: cache-save
+      with:
+        path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-${{ hashFiles('**/pnpm-lock.yaml') }}

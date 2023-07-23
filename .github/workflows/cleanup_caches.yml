@@ -46,4 +46,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: ./.github/actions/main-branch-pnpm-cache
+      - uses: ./.github/actions/pnpm-install-main-branch-cache
