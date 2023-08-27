@@ -4,9 +4,6 @@ description: 'Setup node & pnpm'
 runs:
   using: 'composite'
   steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
     - name: Get node & pnpm version
       shell: bash
       run: |
