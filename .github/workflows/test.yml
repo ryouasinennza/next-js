@@ -1,5 +1,5 @@
 name: 'Code test'
-on: [pull_request]
+on: [push]
 jobs:
   code-test:
     runs-on: ubuntu-latest
