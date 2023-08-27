@@ -4,10 +4,7 @@ jobs:
   code-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - uses: ./.github/actions/pnpm-install-save-pr-cache
+      - uses: ./.github/actions/setup
 
       - name: lint
         run: pnpm lint
