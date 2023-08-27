@@ -11,75 +11,85 @@ module.exports = {
   plugins: [
     'import',
     'unused-imports',
+    'sort-keys-fix',
     'sort-destructure-keys',
     'typescript-sort-keys',
     'testing-library',
     'unicorn',
-    'sort-keys-fix',
   ],
-  settings: {
-    'import/resolver': {
-      typescript: {
-        alwaysTryTypes: true,
-      },
-    },
-  },
   rules: {
-    'no-console': 'error',
-    'sort-keys-fix/sort-keys-fix': 'error',
-    'sort-destructure-keys/sort-destructure-keys': 'error',
-    'typescript-sort-keys/interface': 'error',
-    'typescript-sort-keys/string-enum': 'error',
-    'import/order': [
-      'error',
-      {
-        groups: ['builtin', 'external', 'parent', 'sibling', 'index', 'object', 'type'],
-        alphabetize: {
-          order: 'asc',
-        },
-        'newlines-between': 'never',
-      },
-    ],
-    'import/no-cycle': 'error',
-    'unused-imports/no-unused-imports': 'error',
-    '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/explicit-function-return-type': [
       'error',
       {
         allowExpressions: true,
       },
     ],
-    'unicorn/prevent-abbreviations': 'off',
-    'unicorn/filename-case': 'off',
-    'unicorn/no-null': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
+    'import/no-cycle': 'error',
+    'import/no-relative-parent-imports': 'off',
+    'import/order': [
+      'error',
+      {
+        alphabetize: {
+          order: 'asc',
+        },
+        groups: ['builtin', 'external', 'parent', 'sibling', 'index', 'object', 'type'],
+        'newlines-between': 'never',
+      },
+    ],
+    'no-console': 'error',
+    'no-redeclare': 'off',
     'react/jsx-sort-props': [
       'error',
       {
-        ignoreCase: true,
-        shorthandFirst: true,
         callbacksLast: true,
+        ignoreCase: true,
         noSortAlphabetically: false,
         reservedFirst: true,
+        shorthandFirst: true,
       },
     ],
+    'sort-destructure-keys/sort-destructure-keys': 'error',
+    'sort-keys-fix/sort-keys-fix': 'error',
+    'typescript-sort-keys/interface': ['error', 'asc', { natural: true }],
+    'typescript-sort-keys/string-enum': ['error', 'asc', { natural: true }],
+    'unicorn/filename-case': 'off',
+    'unicorn/no-null': 'off',
+    'unicorn/prevent-abbreviations': 'off',
+    'unused-imports/no-unused-imports': 'error',
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {
+        // alwaysTryTypes: true,
+        project: 'tsconfig.json',
+      },
+    },
   },
   overrides: [
     {
-      files: ['*.stories.@(ts|tsx|js|mjs|cjs)'],
+      files: ['*.stories.@(ts|tsx)'],
       rules: {
-        'storybook/hierarchy-separator': 'error',
         'storybook/default-exports': 'off',
+        'storybook/hierarchy-separator': 'error',
       },
     },
     {
-      files: ['*.test.@(ts|tsx|js|mjs|cjs)'],
+      extends: ['plugin:jest/recommended', 'plugin:jest/style', 'plugin:testing-library/react'],
+      files: ['*.test.ts', '*.test.tsx'],
+      plugins: ['jest'],
       rules: {
+        'jest/consistent-test-it': ['error', { fn: 'it' }],
         'no-console': 'off',
+        'unicorn/consistent-destructuring': 'off',
       },
     },
     {
-      files: ['src/**/*.test.{ts.tsx}'],
-      extends: ['plugin:testing-library/react'],
+      files: ['index.ts'],
+      plugins: ['sort-exports'],
+      rules: {
+        'sort-exports/sort-exports': ['error', { sortDir: 'asc' }],
+      },
     },
   ],
 }
