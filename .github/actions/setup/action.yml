@@ -1,5 +1,5 @@
-name: 'pnpm-install-not-save-cache'
-description: 'Not save cache'
+name: 'setup'
+description: 'Setup node & pnpm'
 
 runs:
   using: 'composite'
@@ -8,8 +8,8 @@ runs:
       shell: bash
       run: |
         pnpm_version=$(cat ./package.json | jq -r .engines.pnpm)
-        echo "PNPM_VERSION=${pnpm_version}" >> $GITHUB_ENV
         node_version=$(cat ./package.json | jq -r .engines.node)
+        echo "PNPM_VERSION=${pnpm_version}" >> $GITHUB_ENV
         echo "NODE_VERSION=${node_version}" >> $GITHUB_ENV
 
     - name: Install Node.js
@@ -24,22 +24,18 @@ runs:
         version: ${{ env.PNPM_VERSION }}
         run_install: false
 
-    - name: Expose pnpm config(s) through "$GITHUB_OUTPUT"
-      id: pnpm-config
+    - name: Get pnpm store directory
       shell: bash
-      run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+        echo "${{ env.STORE_PATH }}"
 
-    - name: Setup pnpm cache
-      uses: actions/cache/restore@v3
-      id: cache-pr
+    - uses: actions/cache@v3
+      name: Setup pnpm cache
       with:
-        path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
+        path: ${{ env.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: ${{ runner.os }}-pnpm-store-
-
-    - name: Cache hit
-      shell: bash
-      run: echo "pr-cache-hit=${{ steps.cache-pr.outputs.cache-hit }}"
 
     - name: Install dependencies
       shell: bash

@@ -9,8 +9,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set pnpm & node
-        uses: ./.github/actions/pnpm-install-save-pr-cache
+      - uses: ./.github/actions/setup
 
       - name: Hello world action step
         id: hello
