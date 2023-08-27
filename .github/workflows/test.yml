@@ -45,3 +45,4 @@ jobs:
         run: |
           pnpm install
           echo "${{ env.STORE_PATH }}"
+          echo "${{ env.PNPM_VERSION }}"
