@@ -1,12 +1,9 @@
 import type { StorybookConfig } from '@storybook/nextjs'
 import type { RuleSetRule } from 'webpack'
 
-const config: StorybookConfig = {
+const storybookConfig: StorybookConfig = {
   stories: ['../src/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-interactions', '@storybook/addon-links'],
-  features: {
-    storyStoreV7: true,
-  },
   framework: {
     name: '@storybook/nextjs',
     options: {
@@ -36,5 +33,4 @@ const config: StorybookConfig = {
     return config
   },
 }
-
-export default config
+export default storybookConfig
