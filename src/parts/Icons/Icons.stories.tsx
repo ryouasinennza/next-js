@@ -1,5 +1,5 @@
+import { Flex } from '@chakra-ui/react'
 import { Meta, StoryObj } from '@storybook/react'
-import { FlexLayout } from '../FlexLayout'
 import { Icons } from './Icons'
 import { svgComponentsKeys } from './svgComponents'
 
@@ -16,9 +16,9 @@ export default meta
 export const Default: Story = {
   render: () => {
     return (
-      <FlexLayout
+      <Flex
         direction="column"
-        spacing={8}
+        gridGap={4}
       >
         {svgComponentsKeys.map((iconName) => {
           return (
@@ -29,7 +29,7 @@ export const Default: Story = {
             />
           )
         })}
-      </FlexLayout>
+      </Flex>
     )
   },
 }

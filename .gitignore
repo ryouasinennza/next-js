@@ -48,3 +48,4 @@ storybook-static
 .swc
 
 /lib/cli/dist/
+/test-results/

@@ -17,3 +17,6 @@ jobs:
 
       - name: type
         run: pnpm type
+
+      - name: e2e
+        run: pnpm e2e

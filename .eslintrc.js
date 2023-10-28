@@ -57,6 +57,7 @@ module.exports = {
     'unicorn/no-null': 'off',
     'unicorn/prevent-abbreviations': 'off',
     'unused-imports/no-unused-imports': 'error',
+    'unicorn/prefer-module': 'off',
   },
   settings: {
     'import/resolver': {
