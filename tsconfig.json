@@ -19,6 +19,15 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "./src/**/*.ts",
+    "./src/**/test.ts",
+    "./src/**/*.tsx",
+    "./e2e/**/*.ts",
+    "./playwright.config.ts",
+    ".next/types/**/*.ts",
+    "jest.setup.ts"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import { FC, ReactNode } from 'react'
-import { StyledComponentsRegistry } from '../lib/registry'
-import { ThemeProvider } from '../styles/theme'
+import { Providers } from '../lib/providers'
 import { SWRConfig } from '../utils/SWRConfig'
 import { eslintDisableConsole } from '../utils/eslintDisableConsole'
 
@@ -20,13 +19,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
     <html lang="ja">
       <body>
         <SWRConfig>
-          <ThemeProvider>
-            <StyledComponentsRegistry>
-              <header>herder</header>
-              {children}
-              <footer>footer</footer>
-            </StyledComponentsRegistry>
-          </ThemeProvider>
+          <Providers>{children}</Providers>
         </SWRConfig>
       </body>
     </html>

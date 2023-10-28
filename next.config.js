@@ -8,7 +8,4 @@ module.exports = {
     return config
   },
   reactStrictMode: false,
-  compiler: {
-    styledComponents: true
-  },
 }

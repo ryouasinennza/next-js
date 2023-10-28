@@ -1,13 +1,17 @@
 'use client'
+import { Flex } from '@chakra-ui/react'
 import { NextPage } from 'next'
 import NextLink from 'next/link'
-import { FlexLayout } from '../parts/FlexLayout'
 
 const Home: NextPage = () => {
   return (
-    <FlexLayout direction="column">
+    <Flex
+      direction="column"
+      gap={4}
+    >
       <NextLink href={'/loading-example'}>loading-example</NextLink>
-    </FlexLayout>
+      <NextLink href={'/e2e-example'}>e2e-example</NextLink>
+    </Flex>
   )
 }
 
