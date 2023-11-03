@@ -1,7 +1,7 @@
 name: 'Code test'
 on: [pull_request]
 jobs:
-  code-test:
+  playwright:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
