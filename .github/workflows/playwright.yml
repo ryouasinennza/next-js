@@ -1,4 +1,4 @@
-name: 'Code test'
+name: 'playwright'
 on: [pull_request]
 jobs:
   playwright:

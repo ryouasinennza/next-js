@@ -17,13 +17,3 @@ jobs:
 
       - name: type
         run: pnpm type
-
-      - name: e2e
-        run: pnpm e2e
-
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 1
