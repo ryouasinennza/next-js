@@ -5,7 +5,7 @@
     "build": "next build --no-lint",
     "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN",
     "clean": "rm -rf ./.next ./storybook-static ./out ./node_modules ./tsconfig.tsbuildinfo ./pnpm-lock.yaml",
-    "dev": "pnpm svg-component-gen-dev & next dev --turbo",
+    "dev": "pnpm svg-component-gen-dev & next dev",
     "fmt": "prettier --write './src/**/*'",
     "lint": "stylelint --fix './src/**/*.{ts,tsx}' & eslint --fix ./src --ext .ts,.tsx",
     "ncu": "npx npm-check-updates -i --format group",

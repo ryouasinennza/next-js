@@ -1,0 +1,24 @@
+name: 'playwright'
+on: [pull_request]
+jobs:
+  playwright:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - uses: ./.github/actions/setup
+
+      - name: Install Playwright
+        shell: bash
+        run: pnpx playwright install --with-deps
+
+      - name: e2e
+        run: pnpm e2e
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 1

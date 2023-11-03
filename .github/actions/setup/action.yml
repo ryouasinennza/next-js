@@ -13,12 +13,12 @@ runs:
         echo "NODE_VERSION=${node_version}" >> $GITHUB_ENV
 
     - name: Install Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ env.NODE_VERSION }}
 
     - name: Install pnpm
-      uses: pnpm/action-setup@v2.2.4
+      uses: pnpm/action-setup@v2
       id: pnpm-install
       with:
         version: ${{ env.PNPM_VERSION }}

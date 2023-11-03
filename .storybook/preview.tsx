@@ -1,4 +1,4 @@
-import { ThemeProvider } from '../src/styles/theme'
+import { Providers } from '../src/lib/providers'
 
 export const globalTypes = {
   theme: {
@@ -45,9 +45,9 @@ export const parameters = {
 export const decorators = [
   (Story, context) => {
     return (
-      <ThemeProvider themeType={context.globals.theme || 'light'}>
+      <Providers>
         <Story />
-      </ThemeProvider>
+      </Providers>
     )
   },
 ]

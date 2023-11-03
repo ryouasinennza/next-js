@@ -7,11 +7,6 @@
 - 通常のフォーマットに加えて オブジェクトのソート、インポートのソート、スタイルのソートをします
 - unicorn による厳格なルール https://github.com/sindresorhus/eslint-plugin-unicorn
 
-### styled-components
-
-- styled-components のセットアップ
-- テーマの切り替え機能
-
 ### pnpm
 
 - pnpm で高速なインストール
