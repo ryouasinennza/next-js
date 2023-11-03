@@ -26,13 +26,13 @@ export default defineConfig({
       use: devices['iPhone 14'],
     },
   ],
-  retries: 2,
+  retries: process.env.CI ? 2 : 0,
   testDir: path.join(__dirname, 'e2e'),
   timeout: 10 * 1000,
   use: {
     baseURL,
-
-    trace: 'retry-with-trace',
+    trace: process.env.CI ? 'on-first-retry' : 'on',
+    video: process.env.CI ? 'on-first-retry' : 'on',
   },
   webServer: {
     command: 'pnpm dev',
