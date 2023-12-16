@@ -137,12 +137,12 @@
     "webpack": "5.89.0"
   },
   "volta": {
-    "node": "20.9.0",
-    "pnpm": "8.10.2"
+    "node": "20.10.0",
+    "pnpm": "8.12.1"
   },
   "engines": {
-    "node": "^20.9.0",
-    "pnpm": "^8.10.2"
+    "node": "^20.10.0",
+    "pnpm": "^8.12.1"
   },
   "browserslist": [
     "last 2 Chrome major versions",
