@@ -49,3 +49,4 @@ storybook-static
 
 /lib/cli/dist/
 /test-results/
+/src/app/api/graphql/dist/
