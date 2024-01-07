@@ -1,0 +1,8 @@
+type Query {
+  helloWorld: HelloWorld!
+}
+
+type HelloWorld {
+  id: ID!
+  message: String!
+}
