@@ -1,4 +1,5 @@
 import { act, renderHook, waitFor } from '@testing-library/react'
+import { expect, describe, it } from 'vitest'
 import { useCount } from './useCount'
 
 describe('useCount', () => {

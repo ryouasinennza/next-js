@@ -15,20 +15,15 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next",
-      },
-    ],
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "./src/**/*.ts",
-    "./src/**/test.ts",
     "./src/**/*.tsx",
-    "./e2e/**/*.ts",
-    "./playwright.config.ts",
-    ".next/types/**/*.ts",
-    "jest.setup.ts",
-    "svg-component-gen.ts",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }

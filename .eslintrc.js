@@ -76,16 +76,6 @@ module.exports = {
       },
     },
     {
-      extends: ['plugin:jest/recommended', 'plugin:jest/style', 'plugin:testing-library/react'],
-      files: ['*.test.ts', '*.test.tsx'],
-      plugins: ['jest'],
-      rules: {
-        'jest/consistent-test-it': ['error', { fn: 'it' }],
-        'no-console': 'off',
-        'unicorn/consistent-destructuring': 'off',
-      },
-    },
-    {
       files: ['index.ts'],
       plugins: ['sort-exports'],
       rules: {
