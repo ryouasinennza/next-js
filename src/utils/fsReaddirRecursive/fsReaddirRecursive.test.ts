@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { expect, describe, it } from 'vitest'
 import { fsReaddirRecursive } from './fsReaddirRecursive'
 
 const filePath = fileURLToPath(import.meta.url)
