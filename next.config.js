@@ -7,5 +7,9 @@ module.exports = {
     })
     return config
   },
+  typescript: {
+    tsconfigPath: process.env?.VERCEL_URL ? 'tsconfig.build.json' : 'tsconfig.json',
+  },
+
   reactStrictMode: false,
 }

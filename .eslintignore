@@ -7,4 +7,4 @@ node_modules
 ppj.config.js
 public
 stylelint.config.js
-/src/app/api/graphql/dist/
+/src/graphql/generated/
